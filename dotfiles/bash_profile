@@ -167,7 +167,7 @@ prompt_color_min() {
 
 prompt_color() {
     PS1="${GREEN}________________________________________________________________________________\n| \w \$(parse_git_branch) \n| => \[${GRAY}\]"
-    PS2="| → "
+    PS2="${GREEN}| → \[${GRAY}\]"
 }
 
 parse_git_branch() {
