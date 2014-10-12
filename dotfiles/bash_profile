@@ -44,24 +44,21 @@ esac
 #-------------------------------------------------------------------------------
 # PATH
 #-------------------------------------------------------------------------------
-test -f "$HOME/.bash_aliases" &&
-source $HOME/.bash_aliases
+test -f "${HOME}/.profile" && source ${HOME}/.profile
+test -f "${HOME}/.bash_aliases" && source ${HOME}/.bash_aliases
 
 # texbin if it exists for LaTeX stuff
-test -d "/usr/texbin" &&
-PATH="/usr/texbin:$PATH"
+test -d "/usr/texbin" && PATH="/usr/texbin:${PATH}"
 
 # Heroku toolbelt
-test -d "/usr/local/heroku/bin" &&
-PATH="/usr/local/heroku/bin:$PATH"
+test -d "/usr/local/heroku/bin" && PATH="/usr/local/heroku/bin:${PATH}"
 
 # global composer
-test -d "$HOME/.composer/vendor/bin" &&
-PATH="$HOME/.composer/vendor/bin:$PATH"
+test -d "${HOME}/.composer/vendor/bin" && PATH="${HOME}/.composer/vendor/bin:${PATH}"
 
 # ~/bin if it exists - want this checked first
-test -d "$HOME/bin" &&
-PATH="$HOME/bin:$PATH"
+test -d "${HOME}/bin" && PATH="${HOME}/bin:${PATH}"
+export PATH=/usr/local/bin:$PATH
 
 #-------------------------------------------------------------------------------
 # Env Configuration
