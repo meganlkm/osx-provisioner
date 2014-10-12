@@ -1,0 +1,11 @@
+*~
+*.bak
+.*DS_Store
+.env.*.php
+.env.php
+Thumbs.db
+*.pyc
+.hg
+*.local
+*.orig
+*.rej
