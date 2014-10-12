@@ -1,0 +1,9 @@
+---
+# file: roles/dotfiles/defaults/main.yml
+
+destdir: /tmp
+mydotfiles:
+  - bash_aliases
+  - bash_profile
+  - gitconfig
+  - vimrc

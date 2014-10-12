@@ -1,0 +1,6 @@
+---
+# file: roles/dotfiles/tasks/main.yml
+
+- name: copy dotfiles
+  copy: src={{ item }} dest=~/.{{ item }}
+  with_items: mydotfiles

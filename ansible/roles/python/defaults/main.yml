@@ -1,0 +1,31 @@
+---
+# file: roles/python/defaults/main.yml
+
+pip_pkgs:
+  - fabric
+  # - Flask
+  - jinja2
+  # - SQLAlchemy
+  # - Sphinx
+  # - Werkzeug
+  # - boto
+  # - bpython
+  # - dulwich
+  # - flake8
+  # - hieroglyph
+  # - httpie
+  # - mercurial
+  - paramiko
+  # - passlib
+  - pip-tools
+  # - psdash
+  # - psutil
+  # - pythong
+  - PyYAML
+  # - requests
+  # - see
+  # - six
+  # - unirest
+  # - uWSGI
+  - virtualenv
+  - virtualenvwrapper

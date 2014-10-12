@@ -1,0 +1,111 @@
+---
+# file: roles/brew/defaults/main.yml
+
+brew_taps:
+  - homebrew/dupes
+  - homebrew/science
+  - homebrew/versions
+  - nviennot/tmate
+  - phinze/cask
+
+brew_pkgs:
+  - autoconf
+  - ansible
+  - aspell
+  - brew-cask
+  - chromedriver
+  # - cloc
+  # - contacts
+  - coreutils
+  - cowsay
+  # - ctags
+  - curl
+  - ec2-api-tools
+  - dos2unix
+  - exiftool
+  - fdupes
+  - figlet
+  - fontconfig
+  - fortune
+  - freetype
+  - gd
+  - gdbm
+  - gettext
+  - geoip
+  - git
+  - git-extras
+  - gnu-sed
+  # - graphviz
+  # - grc
+  - htop-osx
+  - icu4c
+  - imagemagick
+  - jpeg
+  - jq
+  - libgit2
+  - libpng
+  # - libtiff
+  - libtool
+  - libyaml
+  - mcrypt
+  - mhash
+  # - mtr
+  # - ncdu
+  - nmap
+  # - notmuch
+  # - offline-imap
+  - openssl
+  - optipng
+  # - ossp-uuid
+  - python
+  - python3
+  - readline
+  # - reattach-to-user-namespace
+  - ruby
+  # - selenium-server-standalone
+  - sqlite
+  - ssh-copy-id
+  # - task
+  # - the_silver_searcher
+  # - tmate
+  - tmux
+  - unixodbc
+  - urlview
+  # - vcprompt
+  - vim
+  # - vimpager
+  # - vnstat
+  # - watchman
+  - wget
+  # - wireshark
+  # - xapian
+  # - zeromq
+  - zlib
+  # - zsh
+
+brew_casks:
+  - adium
+  - alfred
+  - appcleaner
+  # - bartender
+  # - caffeine
+  # - charles
+  # - iterm2
+  # - dropbox
+  - firefox
+  - flash
+  - google-chrome
+  # - little-snitch
+  - mailbox
+  - nvalt
+  - qlcolorcode
+  - qlmarkdown
+  - qlprettypatch
+  - qlstephen
+  - quicklook-json
+  - shiori
+  # - size-up
+  - skype
+  - sublime-text3
+  - vagrant
+  - virtualbox

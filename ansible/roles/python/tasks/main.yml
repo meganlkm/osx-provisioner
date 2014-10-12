@@ -1,0 +1,7 @@
+---
+# file: roles/python/tasks/main.yml
+
+- name: pip | install pip
+  sudo: yes
+  pip: name={{ item }}
+  with_items: pip_pkgs
