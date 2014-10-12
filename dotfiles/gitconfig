@@ -1,0 +1,12 @@
+[alias]
+      prettylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+[color]
+      ui = true
+
+[github]
+    user = meganlkm
+
+[user]
+	name = Megan
+	email = megan.lkm@gmail.com
