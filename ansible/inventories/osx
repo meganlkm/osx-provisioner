@@ -1,9 +1,2 @@
-[base_osx]
+[all]
 127.0.0.1
-
-[dotfiles]
-127.0.0.1
-
-[osx:children]
-base_osx
-dotfiles
