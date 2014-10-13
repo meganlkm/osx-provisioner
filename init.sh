@@ -18,7 +18,13 @@ if ! command_exists "rvm"; then
 fi
 
 if ! command_exists "brew"; then
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+source $HOME/.bash_profile
+
+if ! command_exists "ansible"; then
+    brew install ansible
 fi
 
 if ! command_exists "python"; then
@@ -29,10 +35,17 @@ if ! command_exists "pip"; then
     sudo easy_install pip
 fi
 
-rvm autolibs homebrew
+if command_exists "rvm"; then
+    rvm autolibs homebrew
+fi
 
-ansible-playbook --ask-sudo-pass -i ansible/inventories/osx ansible/site.yml --connection=local
-brew linkapps
-brew cleanup
+if command_exists "ansible-playbook"; then
+    ansible-playbook --ask-sudo-pass -i ansible/inventories/osx ansible/site.yml --connection=local
+fi
 
-source ~/.bash_profile
+if command_exists "brew"; then
+    brew linkapps
+    brew cleanup
+fi
+
+echo "Completed... A restart might be requried. You may need to reload your bash_profile - execute this command:\n   source ~/.bash_profile"

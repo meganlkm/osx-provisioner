@@ -7,11 +7,13 @@ brew_taps:
   - homebrew/versions
   - nviennot/tmate
   - phinze/cask
+  - caskroom/homebrew-versions
 
 brew_pkgs:
   - autoconf
   - ansible
   - aspell
+  - bash
   - brew-cask
   - chromedriver
   # - cloc
@@ -96,14 +98,14 @@ brew_casks:
   - flash
   - google-chrome
   # - little-snitch
-  - mailbox
-  - nvalt
+  # - mailbox
+  # - nvalt
   - qlcolorcode
   - qlmarkdown
   - qlprettypatch
   - qlstephen
   - quicklook-json
-  - shiori
+  # - shiori
   # - size-up
   - skype
   - sublime-text3

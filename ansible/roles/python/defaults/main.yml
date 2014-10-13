@@ -19,7 +19,9 @@ pip_pkgs:
   # - passlib
   - pip-tools
   # - psdash
+  - pylint
   # - psutil
+  - pytest
   # - pythong
   - PyYAML
   # - requests

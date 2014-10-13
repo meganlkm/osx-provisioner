@@ -15,6 +15,9 @@
   homebrew: name={{ item }} state=upgraded
   with_items: brew_pkgs
 
+# TODO if a new bash was installed
+#   add new path to /etc/shells
+
 # - name: Check for installed apps
 #   shell: brew cask list | grep {{ item }}
 #   register: installed_applications
