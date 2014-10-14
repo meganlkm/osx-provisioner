@@ -49,9 +49,9 @@ alias gcl='git clone'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gdiff='git diff'
-alias gl='git prettylog'
+alias gl='git log --pretty=oneline -n 20 --graph --abbrev-commit'
 alias gp='git push'
-alias gs='git status'
+alias gs='git status -s'
 alias gt='git tag'
 
 #---------------------------
