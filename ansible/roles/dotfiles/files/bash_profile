@@ -263,8 +263,8 @@ test -d '/Applications' && PATH="${PATH}:/Applications"
 
 # why?
 # -bash: /usr/local/etc/grc.bashrc: Permission denied
-mytmp=$(`brew --prefix`/etc/grc.bashrc)
-test -f mytmp && source mytmp
+# mytmp=$(`brew --prefix`/etc/grc.bashrc)
+# test -f mytmp && source mytmp
 
 test -d /usr/local/opt/coreutils/libexec/gnuman &&
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
