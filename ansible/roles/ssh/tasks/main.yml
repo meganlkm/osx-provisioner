@@ -1,0 +1,8 @@
+---
+# file: roles/ssh/tasks/main.yml
+
+- name: generate public/private key
+  action: "shell ssh-keygen -t {{ item.key_type }} -C '{{ item.key_comment }}' -f {{ item.destdir }}/{{ item.key_file }} -P '{{ item.key_passphrase }}' -b {{ item.key_bits }}"
+  args:
+    creates: "{{ item.destdir }}/{{ item.key_file }}"
+  with_items: my_keys
