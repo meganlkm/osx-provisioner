@@ -1,0 +1,14 @@
+*~
+*.bak
+.DS_Store
+Desktop.ini
+Thumbs.db
+.env.*.php
+.env.php
+*.pyc
+.hg
+*.local
+*.orig
+*.rej
+.Spotlight-V100
+.Trashes
