@@ -1,4 +1,4 @@
-my-local-stuff
+osx-provisioner
 ==============
 
 provision osx
