@@ -9,13 +9,14 @@ pip_pkgs:
   # - SQLAlchemy
   # - Sphinx
   # - Werkzeug
-  # - boto
+  - boto
   # - bpython
   # - dulwich
   # - flake8
   # - hieroglyph
   # - httpie
   # - mercurial
+  - mock
   - paramiko
   # - passlib
   - pip-tools
