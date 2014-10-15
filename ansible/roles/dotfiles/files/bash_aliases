@@ -40,6 +40,8 @@ alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file
 alias dul='du -h --max-depth=1'
 alias hi='history | tail -20'
 
+alias diffgits='diff -x .git -x __pycache__ -x *.pyc -rq'
+
 #---------------------------
 # GIT
 #---------------------------
