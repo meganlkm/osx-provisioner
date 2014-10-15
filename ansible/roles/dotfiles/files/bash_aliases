@@ -96,7 +96,8 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 # PYTHON
 #---------------------------
 alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
-alias unittest='python -m unittest -v'
+alias unittest='green'
+# alias unittest='python -m unittest -v'
 
 #---------------------------
 # OTHERS
