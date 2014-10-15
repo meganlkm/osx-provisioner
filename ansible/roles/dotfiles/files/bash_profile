@@ -279,7 +279,12 @@ test -d $mytmp &&
 #-------------------------------------------------------------------------------
 if test -d "${HOME}/sublime_projects"; then
     export ST3_PROJECTS="${HOME}/sublime_projects"
+
+    # open project
     sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project" ; }
+
+    # list projects
+    alias subls="ls ${ST3_PROJECTS}/*.sublime-project"
 fi
 
 #-------------------------------------------------------------------------------
