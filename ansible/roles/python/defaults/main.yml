@@ -6,7 +6,7 @@ pip_pkgs:
   - fabric
   # - Flask
   - jinja2
-  # - SQLAlchemy
+  - SQLAlchemy
   # - Sphinx
   # - Werkzeug
   - boto
