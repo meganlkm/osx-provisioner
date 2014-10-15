@@ -20,6 +20,8 @@
 #-------------------------------------------------------------------------------
 # Shell Options
 #-------------------------------------------------------------------------------
+shopt -s histappend
+
 test -r /etc/bash.bashrc && . /etc/bash.bashrc
 
 # Notify bg task completion immediately
