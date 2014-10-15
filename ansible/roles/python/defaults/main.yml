@@ -2,6 +2,7 @@
 # file: roles/python/defaults/main.yml
 
 pip_pkgs:
+  - autopep8
   - fabric
   # - Flask
   - jinja2
