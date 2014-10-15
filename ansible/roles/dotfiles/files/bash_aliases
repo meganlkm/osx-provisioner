@@ -103,6 +103,11 @@ alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1m
 alias make5mb='mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
 alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
 
+alias resess="source ${HOME}/.bash_profile"
+
 alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when booted into single-user
 alias keycp="cat ${HOME}/.ssh/id_rsa.pub | pbcopy && echo 'Copied to clipboard.'"
 alias phpspec='vendor/bin/phpspec'
+
+alias hello='cowsay hi'
+alias bye='cowsay good-bye'
