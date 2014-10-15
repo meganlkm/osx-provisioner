@@ -97,6 +97,7 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 #---------------------------
 alias be='bundle exec'
 alias v='vagrant'
+alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
 
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
