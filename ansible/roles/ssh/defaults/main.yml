@@ -5,12 +5,12 @@ my_keys:
   - destdir: ~/.ssh
     key_file: me_key1
     key_type: rsa
-    key_comment: test@example.com 
+    key_comment: test@example.com
     key_passphrase: ''
     key_bits: 1024
   - destdir: ~/.ssh
     key_file: me_key2
     key_type: rsa
-    key_comment: test@test.com 
+    key_comment: test@test.com
     key_passphrase: ''
     key_bits: 1024
