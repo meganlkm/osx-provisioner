@@ -13,10 +13,12 @@ pip_pkgs:
   # - bpython
   # - dulwich
   # - flake8
+  - green
   # - hieroglyph
   # - httpie
   # - mercurial
   - mock
+  # - nose
   - paramiko
   # - passlib
   - pip-tools
@@ -26,6 +28,7 @@ pip_pkgs:
   - pytest
   # - pythong
   - PyYAML
+  - redis
   - requests
   # - see
   - sendgrid
