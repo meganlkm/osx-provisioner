@@ -3,28 +3,30 @@
 
 pip_pkgs:
   - autopep8
-  - fabric
-  # - Flask
-  - jinja2
-  - SQLAlchemy
-  # - Sphinx
-  # - Werkzeug
   - boto
   # - bpython
+  - coverage
   # - dulwich
+  - fabric
   # - flake8
+  - Flask
   - green
   # - hieroglyph
-  # - httpie
+  - httpie
+  - jinja2
   # - mercurial
   - mock
   # - nose
+  - pandas
   - paramiko
   # - passlib
+  - pdb
+  - pep8
   - pip-tools
   # - psdash
   - pylint
   # - psutil
+  - py.test
   - pytest
   # - pythong
   - PyYAML
@@ -33,7 +35,11 @@ pip_pkgs:
   # - see
   - sendgrid
   # - six
+  - SQLAlchemy
+  # - Sphinx
+  - tox
   # - unirest
   # - uWSGI
   - virtualenv
   - virtualenvwrapper
+  # - Werkzeug

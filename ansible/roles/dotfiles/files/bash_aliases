@@ -41,6 +41,7 @@ alias dul='du -h --max-depth=1'
 alias hi='history | tail -20'
 
 alias dgits='diff -x .git -x __pycache__ -x *.pyc -x *.coverage -rq'
+alias grepr='grep -Hrn'
 
 #---------------------------
 # GIT
@@ -98,8 +99,7 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 # PYTHON
 #---------------------------
 alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
-alias unittest='green'
-# alias unittest='python -m unittest -v'
+alias unittest='python -m unittest -vvvv'
 
 #---------------------------
 # OTHERS
