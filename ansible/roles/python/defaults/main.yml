@@ -13,6 +13,7 @@ pip_pkgs:
   - green
   # - hieroglyph
   - httpie
+  - jedi
   - jinja2
   # - mercurial
   - mock
