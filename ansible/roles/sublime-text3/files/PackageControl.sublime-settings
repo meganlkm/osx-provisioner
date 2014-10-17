@@ -1,0 +1,41 @@
+//  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
+//  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/PackageControl.sublime-settings
+{
+    "installed_packages":
+    [
+        "AdvancedNewFile",
+        "All Autocomplete",
+        "Anaconda",
+        "ApplySyntax",
+        "BracketHighlighter",
+        "ColorPicker",
+        "DocBlockr",
+        "Fold Python",
+        "Fold Python Docstrings",
+        "GitGutter",
+        "Glue",
+        "Jedi - Python autocompletion",
+        "Markdown Preview",
+        "Monokai Extended",
+        "Python Checker",
+        "Python PEP8 Autoformat",
+        "PythonStautsBarShowSymbol",
+        "PythonTest",
+        "SideBarEnhancements",
+        "SublimeCodeIntel",
+        "SublimeLinter",
+        "SublimeLinter-annotations",
+        "SublimeLinter-contrib-perl",
+        "SublimeLinter-javac",
+        "SublimeLinter-jsl",
+        "SublimeLinter-json",
+        "SublimeLinter-pep8",
+        "SublimeLinter-pyflakes",
+        "SublimeLinter-pylint",
+        "SublimeLinter-pyyaml",
+        "SublimeLinter-ruby",
+        "SublimeLinter-xmllint",
+        "SublimeREPL",
+        "Theme - Soda"
+    ]
+}
