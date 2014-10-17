@@ -56,7 +56,6 @@ brew_pkgs:
   - nmap
   # - notmuch
   # - offline-imap
-  - openssl
   - optipng
   # - ossp-uuid
   - python
