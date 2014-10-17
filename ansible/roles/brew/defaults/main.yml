@@ -76,23 +76,23 @@ brew_pkgs:
   - zlib
 
 gnu_pkgs:
-  # - { name: 'binutils', options: '' }
-  # - { name: 'coreutils', options: '' }
-  # - { name: 'diffutils', options: '' }
-  # - { name: 'ed', options: 'default-names' }
+  - { name: 'binutils', options: '' }
+  - { name: 'coreutils', options: '' }
+  - { name: 'diffutils', options: '' }
+  - { name: 'ed', options: 'default-names' }
   - { name: 'findutils', options: '' }
-  # - { name: 'gawk', options: '' }
-  # - { name: 'gnu-indent', options: 'default-names' }
-  # - { name: 'gnu-sed', options: 'default-names' }
-  # - { name: 'gnu-tar', options: 'default-names' }
-  # - { name: 'gnu-which', options: 'default-names' }
-  # - { name: 'gnutls', options: 'default-names' }
-  # - { name: 'grep', options: 'default-names' }
-  # - { name: 'gzip', options: '' }
-  # - { name: 'screen', options: '' }
-  # - { name: 'watch', options: '' }
-  # - { name: 'wdiff', options: 'with-gettext'}
-  # - { name: 'wget', options: '' }
+  - { name: 'gawk', options: '' }
+  - { name: 'gnu-indent', options: 'default-names' }
+  - { name: 'gnu-sed', options: 'default-names' }
+  - { name: 'gnu-tar', options: 'default-names' }
+  - { name: 'gnu-which', options: 'default-names' }
+  - { name: 'gnutls', options: 'default-names' }
+  - { name: 'grep', options: 'default-names' }
+  - { name: 'gzip', options: '' }
+  - { name: 'screen', options: '' }
+  - { name: 'watch', options: '' }
+  - { name: 'wdiff', options: 'with-gettext'}
+  - { name: 'wget', options: '' }
 
 upgrade_pkgs:
   - { name: 'ansible', options: '' }
