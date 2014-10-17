@@ -7,18 +7,15 @@ brew_taps:
   - homebrew/versions
   - nviennot/tmate
   - phinze/cask
-  - caskroom/homebrew-versions
+  - caskroom/versions
 
 brew_pkgs:
   - autoconf
-  - ansible
   - aspell
-  - bash
   - brew-cask
   - chromedriver
   # - cloc
   # - contacts
-  - coreutils
   - cowsay
   # - ctags
   - curl
@@ -34,9 +31,7 @@ brew_pkgs:
   - gdbm
   - gettext
   - geoip
-  - git
-  - git-extras
-  - gnu-sed
+  # - git-extras
   # - graphviz
   # - grc
   - htop-osx
@@ -44,7 +39,7 @@ brew_pkgs:
   - imagemagick
   - jpeg
   - jq
-  - libgit2
+  # - libgit2
   - libpng
   # - libtiff
   - libtool
@@ -58,7 +53,6 @@ brew_pkgs:
   # - offline-imap
   - optipng
   # - ossp-uuid
-  - python
   - python3
   - readline
   # - reattach-to-user-namespace
@@ -73,16 +67,54 @@ brew_pkgs:
   - unixodbc
   - urlview
   # - vcprompt
-  - vim
   # - vimpager
   # - vnstat
   # - watchman
-  - wget
   # - wireshark
   # - xapian
   # - zeromq
   - zlib
-  # - zsh
+
+gnu_pkgs:
+  # - { name: 'binutils', options: '' }
+  # - { name: 'coreutils', options: '' }
+  # - { name: 'diffutils', options: '' }
+  # - { name: 'ed', options: 'default-names' }
+  - { name: 'findutils', options: '' }
+  # - { name: 'gawk', options: '' }
+  # - { name: 'gnu-indent', options: 'default-names' }
+  # - { name: 'gnu-sed', options: 'default-names' }
+  # - { name: 'gnu-tar', options: 'default-names' }
+  # - { name: 'gnu-which', options: 'default-names' }
+  # - { name: 'gnutls', options: 'default-names' }
+  # - { name: 'grep', options: 'default-names' }
+  # - { name: 'gzip', options: '' }
+  # - { name: 'screen', options: '' }
+  # - { name: 'watch', options: '' }
+  # - { name: 'wdiff', options: 'with-gettext'}
+  # - { name: 'wget', options: '' }
+
+upgrade_pkgs:
+  - { name: 'ansible', options: '' }
+  - { name: 'bash', options: '' }
+  - { name: 'emacs', options: '' }
+  - { name: 'file-formula', options: '' }
+  - { name: 'gdb', options: '' } # gdb requires further actions to make it work. See `brew info gdb`
+  - { name: 'git', options: '' }
+  - { name: 'gpatch', options: '' }
+  - { name: 'less', options: '' }
+  - { name: 'm4', options: '' }
+  # - { name: 'macvim', options: 'override-system-vim,custom-system-icons' }
+  - { name: 'make', options: '' }
+  - { name: 'nano', options: '' }
+  # - { name: 'perl518', options: '' } # must run "brew tap homebrew/versions" first!
+  - { name: 'openssh', options: 'with-brewed-openssl' }
+  - { name: 'python', options: 'with-brewed-openssl' }
+  - { name: 'rsync', options: '' }
+  - { name: 'svn', options: '' }
+  - { name: 'unzip', options: '' }
+  # - { name: 'vim', options: 'override-system-vi' }
+  - { name: 'zsh', options: '' }
 
 brew_casks:
   - adium
