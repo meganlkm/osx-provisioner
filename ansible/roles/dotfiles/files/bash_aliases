@@ -122,3 +122,5 @@ alias hello='cowsay hi'
 alias bye='cowsay good-bye'
 alias ghost='printf "\n༼ つ ◕_◕ ༽つ\n"'
 
+alias ibook='open -a iBooks'
+alias preview='open -a Preview'
