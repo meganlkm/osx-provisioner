@@ -49,7 +49,7 @@
     "show_full_path": true,
     "show_line_endings": true,
     "show_panel_on_build": false,
-    "soda_classic_tabs": true,
+    "soda_classic_tabs": false,
     "soda_folder_icons": true,
     "theme": "Soda Dark 3.sublime-theme",
     "translate_tabs_to_spaces": true,
