@@ -5,6 +5,7 @@ pip_pkgs:
   - autopep8
   - boto
   # - bpython
+  - Celery
   - coverage
   # - dulwich
   - fabric
@@ -21,13 +22,11 @@ pip_pkgs:
   - pandas
   - paramiko
   # - passlib
-  - pdb
   - pep8
   - pip-tools
   # - psdash
   - pylint
   # - psutil
-  - py.test
   - pytest
   # - pythong
   - PyYAML
