@@ -1,5 +1,3 @@
-// ~/Library/Application Support/Sublime Text 3/Packages/User/SodaDark3.sublime-theme
-//  ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Soda\ Dark\ 3.sublime-theme
 [
     {
         "class": "tab_label",
@@ -8,3 +6,4 @@
         "fg": [120, 170, 250]
     }
 ]
+

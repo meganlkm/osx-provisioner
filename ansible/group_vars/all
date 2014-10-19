@@ -1,0 +1,3 @@
+---
+dotfiles_path: "~/dotfiles"
+app_configs: "{{ dotfiles_path }}/configs"

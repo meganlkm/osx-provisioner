@@ -1,45 +1,24 @@
 ---
-# file: roles/brew/defaults/main.yml
+# file: roles/sublime-text3/defaults/main.yml
 
-packages:
-  - 'Package Control'
-  - 'All Autocomplete'
-  - 'Anaconda'
-  - 'ApplySyntax'
-  - 'AutoFileName'
-  - 'BracketHighlighter'
-  - 'ColorPicker'
-  - 'DocBlockr'
-  - 'ExportHtml'
-  - 'Fold Python'
-  - 'Fold Python Docstrings'
-  - 'GenerateUUID'
-  - 'GitGutter'
-  - 'Glue'
-  - 'HexViewer'
-  - 'Markdown Preview'
-  - 'PackageResourceViewer'
-  - 'PlistJsonConverter'
-  - 'Python Checker'
-  - 'Python PEP8 Autoformat'
-  - 'PythonStautsBarShowSymbol'
-  - 'PythonTest'
-  - 'SideBarEnhancements'
-  - 'SublimeCodeIntel'
-  - 'SublimeLinter'
-  - 'SublimeLinter-annotations'
-  - 'SublimeLinter-contrib-perl'
-  - 'SublimeLinter-javac'
-  - 'SublimeLinter-jsl'
-  - 'SublimeLinter-json'
-  - 'SublimeLinter-pep8'
-  - 'SublimeLinter-pyflakes'
-  - 'SublimeLinter-pylint'
-  - 'SublimeLinter-pyyaml'
-  - 'SublimeLinter-ruby'
-  - 'SublimeLinter-xmllint'
-  - 'SublimeREPL'
-  - 'Tag'
-  - 'Terminal'
+st3_lib_base: "~/Library/Application\ Support/Sublime\ Text\ 3"
 
-# "Python Improved",
+st3_conf:
+  path: "{{ app_configs }}/st3"
+  user_pkg_path: "{{ st3_lib_base }}/Packages/User"
+  installed_pkgs: "{{ st3_lib_base }}/Installed\ Packages"
+  templates:
+    - 'Glue.sublime-settings'
+
+st3_brew:
+  taps:
+    - phinze/cask
+    - homebrew/versions
+  formula: "sublime-text3"
+
+st3_project_dirs:
+  - "~/st3_projects"
+
+st3_package_control:
+    url: "https://sublime.wbond.net/Package%20Control.sublime-package"
+    dest: "{{ st3_conf.installed_pkgs }}/Package\ Control.sublime-package"

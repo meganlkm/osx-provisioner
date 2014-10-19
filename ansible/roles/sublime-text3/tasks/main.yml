@@ -1,48 +1,56 @@
 ---
-# file: roles/brew/tasks/main.yml
+# file: roles/sublime-text3/tasks/main.yml
 
 # TODO
-#   * if a new bash was installed add new path to /etc/shells
-#   * edit path in ~/.bash_profile echo export PATH='/usr/local/sbin:$PATH' >> ~/.bash_profile
-#   * iterm2
-#   * sublime text packages
+#   * move sublime text stuff from bash_profile to a st3 conf
+#   * append st3 conf to bash_profile
 
-- name: brew | update 1
-  homebrew: update_homebrew=yes
+- name: st3 | taps
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items: st3_brew.taps
 
-- name: brew | tap
-  homebrew_tap: name={{ item }} state=present
-  with_items: brew_taps
+- name: st3 | install sublime-text3
+  homebrew_cask:
+    name: "{{ st3_brew.formula }}"
+    state: present
 
-- name: brew | update 2
-  homebrew: update_homebrew=yes upgrade_all=yes
+- name: st3 | get Package Control and put in Installed Packages directory
+  get_url:
+    url: "{{ st3_package_control.url }}"
+    dest: "{{ st3_package_control.dest }}"
 
-- name: brew | install packages
-  homebrew: name={{ item }} state=upgraded
-  with_items: brew_pkgs
+- name: st3 | create config dir if it does not exist
+  file:
+    path: "{{ st3_conf.path }}"
+    state: directory
 
-- name: brew | upgrade preinstalled packages
-  homebrew: name={{ item.name }} install_options={{ item.options }} state=upgraded
-  with_items: upgrade_pkgs
+- name: st3 | sync this config dir with the fs config dir
+  synchronize:
+    src: "st3_configs/"
+    dest: "{{ st3_conf.path }}"
 
-- name: brew | install gnu packages
-  homebrew: name={{ item.name }} install_options={{ item.options }} state=upgraded
-  with_items: gnu_pkgs
+- name: st3 | remove existing User config dir
+  file:
+    path: "{{ st3_conf.user_pkg_path }}"
+    state: absent
 
-# - name: Check for installed apps
-#   shell: brew cask list | grep {{ item }}
-#   register: installed_applications
-#   with_items: casks
-#   ignore_errors: true
+- name: st3 | symlink st3 configs
+  file:
+    src: "{{ st3_conf.path }}"
+    dest: "{{ st3_conf.user_pkg_path }}"
+    force: yes
+    state: link
 
-# - name: print installed casks
-#   debug: msg="cask apps installed {{ installed_applications.results|map(attribute='stdout') }}"
+- name: st3 | create configs from templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ st3_conf.path }}/{{ item }}"
+  with_items: st3_conf.templates
 
-- name: brew | cask install casks
-  homebrew_cask: name={{ item }} state=installed
-  with_items: brew_casks
-  # when: item not in installed_applications.results|map(attribute='stdout')
-
-# might be overkill..
-- name: brew | last update
-  homebrew: update_homebrew=yes upgrade_all=yes
+- name: st3 | create projects dir
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: st3_project_dirs
