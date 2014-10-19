@@ -36,9 +36,9 @@ brew_pkgs:
   # - grc
   - htop-osx
   - icu4c
-  - imagemagick
   - jpeg
   - jq
+  - knock
   # - libgit2
   - libpng
   # - libtiff
@@ -92,16 +92,18 @@ gnu_pkgs:
   - { name: 'screen', options: '' }
   - { name: 'watch', options: '' }
   - { name: 'wdiff', options: 'with-gettext'}
-  - { name: 'wget', options: '' }
+  - { name: 'wget', options: 'enable-iri' }
 
 upgrade_pkgs:
   - { name: 'ansible', options: '' }
   - { name: 'bash', options: '' }
+  - { name: 'bash-completion', options: '' }
   - { name: 'emacs', options: '' }
   - { name: 'file-formula', options: '' }
   - { name: 'gdb', options: '' } # gdb requires further actions to make it work. See `brew info gdb`
   - { name: 'git', options: '' }
   - { name: 'gpatch', options: '' }
+  - { name: 'imagemagick', options: 'with-webp' }
   - { name: 'less', options: '' }
   - { name: 'm4', options: '' }
   # - { name: 'macvim', options: 'override-system-vim,custom-system-icons' }
@@ -109,7 +111,7 @@ upgrade_pkgs:
   - { name: 'nano', options: '' }
   # - { name: 'perl518', options: '' } # must run "brew tap homebrew/versions" first!
   - { name: 'openssh', options: 'with-brewed-openssl' }
-  - { name: 'python', options: 'with-brewed-openssl' }
+  - { name: 'python', options: 'framework,with-brewed-openssl' }
   - { name: 'rsync', options: '' }
   - { name: 'svn', options: '' }
   - { name: 'unzip', options: '' }
