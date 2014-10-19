@@ -279,7 +279,7 @@ if [[ -d mytmp ]]; then
 fi
 
 # test -d '/usr/local/sbin' &&
-#     export PATH='/usr/local/sbin:$PATH'
+#     export PATH="/usr/local/sbin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # Python
