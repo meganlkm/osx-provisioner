@@ -130,6 +130,7 @@ brew_casks:
   - firefox
   - flash
   - google-chrome
+  - hipchat
   # - little-snitch
   # - mailbox
   # - nvalt
@@ -141,6 +142,6 @@ brew_casks:
   # - shiori
   # - size-up
   - skype
-  - sublime-text3
+  # - sublime-text3
   - vagrant
   - virtualbox
