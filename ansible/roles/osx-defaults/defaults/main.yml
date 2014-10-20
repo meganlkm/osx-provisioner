@@ -1,7 +1,62 @@
 ---
 # file: roles/osx-defaults/defaults/main.yml
 
+# look at this:
+#   # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+
+# write_defaults:
+#   - "NSGlobalDomain AppleKeyboardUIMode -int 3"
+#   - "NSGlobalDomain ApplePressAndHoldEnabled -bool false"
+#   - "NSGlobalDomain AppleShowAllExtensions -bool true"
+#   - "NSGlobalDomain KeyRepeat -int 0"
+#   - "NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false"
+#   - "NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false"
+#   - "NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true"
+#   - "NSGlobalDomain PMPrintingExpandedStateForPrint -bool true"
+#   - "NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true"
+#   - "NSGlobalDomain WebKitDeveloperExtras -bool true"
+
+
+#   - "com.apple.print.PrintingPrefs 'Quit When Finished' -bool true"
+
+#   - "com.apple.SoftwareUpdate ScheduleFrequency -int 1"
+
+#   - "com.apple.finder _FXShowPosixPathInTitle -bool true"
+#   - "com.apple.finder AppleShowAllFiles -bool true"
+#   - "com.apple.finder FXEnableExtensionChangeWarning -bool false"
+#   - "com.apple.finder FXPreferredViewStyle clmv"
+#   - "com.apple.finder QLEnableTextSelection -bool true"
+#   - "com.apple.finder ShowExternalHardDrivesOnDesktop -bool true"
+#   - "com.apple.finder ShowStatusBar -bool true"
+
+
+#   - "com.apple.desktopservices DSDontWriteNetworkStores -bool true"
+
+#   - "com.apple.frameworks.diskimages skip-verify -bool true"
+#   - "com.apple.frameworks.diskimages skip-verify-locked -bool true"
+#   - "com.apple.frameworks.diskimages skip-verify-remote -bool true"
+
+#   - "com.apple.dock tilesize -int 36"
+#   - "com.apple.dock expose-animation-duration -float 0.1"
+#   - "com.apple.dock 'expose-group-by-app' -bool true"
+
+#   - "com.apple.dock autohide -bool true"
+#   - "com.apple.dock autohide-delay -float 0"
+#   - "com.apple.dock autohide-time-modifier -float 0"
+
+#   - "com.apple.Safari IncludeInternalDebugMenu -bool true"
+#   - "com.apple.Safari IncludeDevelopMenu -bool true"
+#   - "com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true"
+#   - "com.apple.Safari 'com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled' -bool true"
+
+#   - "com.apple.terminal StringEncodings -array 4"
+#   - "com.apple.terminal 'Default Window Settings' -string Homebrew"
+
+
+#   - 'chflags nohidden ~/Library'
+
 sys_conf_defaults:
+  - "defaults write com.apple.terminal 'Default Window Settings' -string Homebrew"
   - "defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true"
   - 'defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true'
   - 'defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true'
