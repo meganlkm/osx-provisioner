@@ -4,6 +4,7 @@
 # TODO
 #   * move sublime text stuff from bash_profile to a st3 conf
 #   * append st3 conf to bash_profile
+#   * https://sublime.wbond.net/docs/syncing
 
 - name: st3 | taps
   homebrew_tap:

@@ -124,3 +124,6 @@ alias ghost='printf "\n༼ つ ◕_◕ ༽つ\n"'
 
 alias ibook='open -a iBooks'
 alias preview='open -a Preview'
+
+alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'

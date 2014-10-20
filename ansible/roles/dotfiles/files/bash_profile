@@ -48,6 +48,7 @@ esac
 #-------------------------------------------------------------------------------
 test -f "${HOME}/.profile" && source ${HOME}/.profile
 test -f "${HOME}/.bash_aliases" && source ${HOME}/.bash_aliases
+# test -f "${HOME}/.bashrc" && source ${HOME}/.bashrc
 
 # texbin if it exists for LaTeX stuff
 test -d "/usr/texbin" && PATH="/usr/texbin:${PATH}"
@@ -60,7 +61,8 @@ test -d "${HOME}/.composer/vendor/bin" && PATH="${HOME}/.composer/vendor/bin:${P
 
 # ~/bin if it exists - want this checked first
 test -d "${HOME}/bin" && PATH="${HOME}/bin:${PATH}"
-export PATH=/usr/local/bin:$PATH
+
+export PATH="/usr/local/bin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # Env Configuration
