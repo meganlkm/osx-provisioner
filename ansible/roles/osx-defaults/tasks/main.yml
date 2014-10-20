@@ -1,6 +1,13 @@
 ---
 # file: roles/osx-defaults/tasks/main.yml
 
+# TODO
+#   * finish defaults mapping
+#   * add tasks to execute all of the settings
+#   * add user friendly reference
+#   * defaults/main will contain all settings
+#   * option to set all variables in vars/main
+
 - name: osx-defaults | set system config
   action: shell {{ item }}
   with_items: sys_conf_defaults
