@@ -4,91 +4,453 @@
 # look at this:
 #   # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
-# write_defaults:
-#   - "NSGlobalDomain AppleKeyboardUIMode -int 3"
-#   - "NSGlobalDomain ApplePressAndHoldEnabled -bool false"
-#   - "NSGlobalDomain AppleShowAllExtensions -bool true"
-#   - "NSGlobalDomain KeyRepeat -int 0"
-#   - "NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false"
-#   - "NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false"
-#   - "NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true"
-#   - "NSGlobalDomain PMPrintingExpandedStateForPrint -bool true"
-#   - "NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true"
-#   - "NSGlobalDomain WebKitDeveloperExtras -bool true"
 
 
-#   - "com.apple.print.PrintingPrefs 'Quit When Finished' -bool true"
+# Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#   defaults write "${domain}" dontAutoLoad -array \
+#     "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#     "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#     "/System/Library/CoreServices/Menu Extras/User.menu"
+# done
+# defaults write com.apple.systemuiserver menuExtras -array \
+#   "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#   "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-#   - "com.apple.SoftwareUpdate ScheduleFrequency -int 1"
-
-#   - "com.apple.finder _FXShowPosixPathInTitle -bool true"
-#   - "com.apple.finder AppleShowAllFiles -bool true"
-#   - "com.apple.finder FXEnableExtensionChangeWarning -bool false"
-#   - "com.apple.finder FXPreferredViewStyle clmv"
-#   - "com.apple.finder QLEnableTextSelection -bool true"
-#   - "com.apple.finder ShowExternalHardDrivesOnDesktop -bool true"
-#   - "com.apple.finder ShowStatusBar -bool true"
+# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
+# /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 
-#   - "com.apple.desktopservices DSDontWriteNetworkStores -bool true"
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+# sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-#   - "com.apple.frameworks.diskimages skip-verify -bool true"
-#   - "com.apple.frameworks.diskimages skip-verify-locked -bool true"
-#   - "com.apple.frameworks.diskimages skip-verify-remote -bool true"
+# Restart automatically if the computer freezes
+# sudo systemsetup -setrestartfreeze on
 
-#   - "com.apple.dock tilesize -int 36"
-#   - "com.apple.dock expose-animation-duration -float 0.1"
-#   - "com.apple.dock 'expose-group-by-app' -bool true"
+# Never go into computer sleep mode
+# sudo systemsetup -setcomputersleep Off > /dev/null
 
-#   - "com.apple.dock autohide -bool true"
-#   - "com.apple.dock autohide-delay -float 0"
-#   - "com.apple.dock autohide-time-modifier -float 0"
+# Disable Notification Center and remove the menu bar icon
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
-#   - "com.apple.Safari IncludeInternalDebugMenu -bool true"
-#   - "com.apple.Safari IncludeDevelopMenu -bool true"
-#   - "com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true"
-#   - "com.apple.Safari 'com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled' -bool true"
+###############################################################################
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+###############################################################################
 
-#   - "com.apple.terminal StringEncodings -array 4"
-#   - "com.apple.terminal 'Default Window Settings' -string Homebrew"
+# Trackpad: enable tap to click for this user and for the login screen
+
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: map bottom right corner to right-click
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+
+# Stop iTunes from responding to the keyboard media keys
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+
+
+
+
+
+
+
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
+# Disable local Time Machine backups
+# hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+
+
+
+
+
+# requires sudo
+write_sys_defaults:
+  - 'sudo pmset -a standbydelay 86400'
+  - 'sudo nvram SystemAudioVolume=" "'
+  - "sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true"
+
+
+write_user_defaults:
+  NSGlobalDomain:
+    - "AppleFontSmoothing -int 2"
+    - "AppleHighlightColor -string '0.764700 0.976500 0.568600'"
+    - "AppleKeyboardUIMode -int 3"
+    - "ApplePressAndHoldEnabled -bool false"
+    - "AppleShowAllExtensions -bool true"
+    - "AppleShowScrollBars -string 'Always'"
+    - "KeyRepeat -int 0"
+    - "NSAutomaticDashSubstitutionEnabled -bool false"
+    - "NSAutomaticQuoteSubstitutionEnabled -bool false"
+    - "NSAutomaticSpellingCorrectionEnabled -bool false"
+    - "NSDisableAutomaticTermination -bool true"
+    - "NSNavPanelExpandedStateForSaveMode -bool true"
+    - "NSNavPanelExpandedStateForSaveMode2 -bool true"
+    - "NSTextShowsControlCharacters -bool true"
+    - "NSWindowResizeTime -float 0.001"
+    - "PMPrintingExpandedStateForPrint -bool true"
+    - "PMPrintingExpandedStateForPrint2 -bool true"
+    - "WebKitDeveloperExtras -bool true"
+    - "com.apple.mouse.tapBehavior -int 1"
+    - "com.apple.springing.delay -float 0"
+    - "com.apple.springing.enabled -bool true"
+  com.apple.ActivityMonitor:
+    - "IconType -int 5"
+    - "OpenMainWindow -bool true"
+    - "ShowCategory -int 0"
+    - "SortColumn -string 'CPUUsage'"
+    - "SortDirection -int 0"
+  com.apple.DiskUtility:
+    - "DUDebugMenuEnabled -bool true"
+    - "advanced-image-options -bool true"
+  com.apple.LaunchServices:
+    - "LSQuarantine -bool false"
+  com.apple.NetworkBrowser:
+    - "BrowseAllInterfaces -bool true"
+  com.apple.Safari:
+    - "AutoOpenSafeDownloads -bool false"
+    - "DebugSnapshotsUpdatePolicy -int 2"
+    - "FindOnPageMatchesWordStartsOnly -bool false"
+    - "HomePage -string 'about:blank'"
+    - "IncludeDevelopMenu -bool true"
+    - "IncludeInternalDebugMenu -bool true"
+    - "ProxiesInBookmarksBar '()'"
+    - "ShowFavoritesBar -bool false"
+    - "ShowSidebarInTopSites -bool false"
+    - "UniversalSearchEnabled -bool false"
+    - "WebKitDeveloperExtrasEnabledPreferenceKey -bool true"
+    - "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true"
+    - "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true"
+  com.apple.SoftwareUpdate:
+    - "ScheduleFrequency -int 1"
+  com.apple.TextEdit:
+    - "RichText -int 0"
+    - "PlainTextEncoding -int 4"
+    - "PlainTextEncodingForWrite -int 4"
+  com.apple.TimeMachine:
+    - "DoNotOfferNewDisksForBackup -bool true"
+  com.apple.addressbook:
+    - "ABShowDebugMenu -bool true"
+  com.apple.appstore:
+    - "WebKitDeveloperExtras -bool true"
+    - "ShowDebugMenu -bool true"
+  com.apple.dashboard:
+    - "devmode -bool true"
+    - "mcx-disabled -bool true"
+  com.apple.desktopservices:
+    - "DSDontWriteNetworkStores -bool true"
+  com.apple.dock:
+    - "autohide -bool true"
+    - "autohide-delay -float 0"
+    - "autohide-time-modifier -float 0"
+    - "dashboard-in-overlay -bool true"
+    - "enable-spring-load-actions-on-all-items -bool true"
+    - "expose-animation-duration -float 0.1"
+    - "expose-group-by-app -bool true"
+    - "launchanim -bool false"
+    - "mineffect -string 'scale'"
+    - "minimize-to-application -bool true"
+    - "mouse-over-hilite-stack -bool true"
+    # - "mru-spaces -bool false" # automatically rearrange Spaces based on most recent use
+    - "show-process-indicators -bool true"
+    - "showhidden -bool true"
+    - "tilesize -int 36"
+  com.apple.driver.AppleBluetoothMultitouch.trackpad:
+    - "Clicking -bool true"
+    - "TrackpadCornerSecondaryClick -int 2"
+    - "TrackpadRightClick -bool true"
+  com.apple.finder:
+    - "_FXShowPosixPathInTitle -bool true"
+    - "AppleShowAllFiles -bool true"
+    - "DisableAllAnimations -bool true"
+    - "EmptyTrashSecurely -bool true"
+    - "FXDefaultSearchScope -string 'SCcf'"
+    - "FXEnableExtensionChangeWarning -bool false"
+    - "FXPreferredViewStyle clmv"
+    - "OpenWindowForNewRemovableDisk -bool true"
+    - "QLEnableTextSelection -bool true"
+    - "QuitMenuItem -bool true"
+    - "ShowExternalHardDrivesOnDesktop -bool true"
+    - "ShowHardDrivesOnDesktop -bool true"
+    - "ShowMountedServersOnDesktop -bool true"
+    - "ShowRemovableMediaOnDesktop -bool true"
+    - "ShowPathbar -bool true"
+    - "ShowStatusBar -bool true"
+    - "WarnOnEmptyTrash -bool false"
+  com.apple.frameworks.diskimages:
+    - "auto-open-ro-root -bool true"
+    - "auto-open-rw-root -bool true"
+    - "skip-verify -bool true"
+    - "skip-verify-locked -bool true"
+    - "skip-verify-remote -bool true"
+  com.apple.helpviewer:
+    - "DevMode -bool true"
+  com.apple.iCal:
+    "IncludeDebugMenu -bool true"
+  com.apple.mail:
+    - "AddressesIncludeNameOnPasteboard -bool false"
+    - "DisableInlineAttachmentViewing -bool true"
+    - "DisableReplyAnimations -bool true"
+    - "DisableSendAnimations -bool true"
+    - "DraftsViewerAttributes -dict-add 'DisplayInThreadedMode' -string 'yes'"
+    - "DraftsViewerAttributes -dict-add 'SortedDescending' -string 'yes'"
+    - "DraftsViewerAttributes -dict-add 'SortOrder' -string 'received-date'"
+    - 'NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"' # [⌘ + Enter] to send an email in Mail.app
+    # - "SpellCheckingBehavior -string 'NoSpellCheckingEnabled'"
+  com.apple.messageshelper.MessageController:
+    - "SOInputLineSettings -dict-add 'automaticEmojiSubstitutionEnablediMessage' -bool true"
+    - "SOInputLineSettings -dict-add 'automaticQuoteSubstitutionEnabled' -bool false"
+    - "SOInputLineSettings -dict-add 'continuousSpellCheckingEnabled' -bool false"
+  com.apple.print.PrintingPrefs:
+    - "'Quit When Finished' -bool true"
+  com.apple.screencapture:
+    "disable-shadow -bool true"
+    - "type -string 'png'"
+  com.apple.screensaver:
+    - "askForPassword -int 1"
+    - "askForPasswordDelay -int 0"
+  com.apple.terminal:
+    - "StringEncodings -array 4"
+    - "'Default Window Settings' -string Homebrew"
+  com.apple.universalaccess:
+    - "closeViewScrollWheelToggle -bool true"
+    - "closeViewZoomFollowsFocus -bool true"
+    - "HIDScrollZoomModifierMask -int 262144"
+    - "reduceTransparency -bool true"
+  com.google.Chrome:
+    - "AppleEnableSwipeNavigateWithScrolls -bool false"
+    - "DisablePrintPreview -bool true"
+    - "ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'"
+  com.google.Chrome.canary:
+    - "AppleEnableSwipeNavigateWithScrolls -bool false"
+    - "DisablePrintPreview -bool true"
+    - "ExtensionInstallSources -array 'https://gist.githubusercontent.com/' 'http://userscripts.org/*'"
+
+
+
+
+# Disable Resume system-wide
+# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+# Disable the crash reporter
+#defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Save to disk (not to iCloud) by default
+# "NSDocumentSaveNewDocumentsToCloud -bool false"
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+# "NewWindowTarget -string 'PfDe'"
+# "NewWindowTargetPath -string 'file://${HOME}/Desktop/'"
+
+# Wipe all (default) app icons from the Dock
+# This is only really useful when setting up a new Mac, or if you don’t use
+# the Dock to launch apps.
+#defaults write com.apple.dock persistent-apps -array ""
+# Disable the Launchpad gesture (pinch with thumb and three fingers)
+#defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+# Save screenshots to the desktop
+# defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+
+
 
 
 #   - 'chflags nohidden ~/Library'
 
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+# defaults write com.apple.finder FXInfoPanesExpanded -dict \
+#   General -bool true \
+#   OpenWith -bool true \
+#   Privileges -bool true
+
 sys_conf_defaults:
-  - "defaults write com.apple.terminal 'Default Window Settings' -string Homebrew"
-  - "defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true"
-  - 'defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true'
-  - 'defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true'
-  - 'defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true'
-  - 'defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1'
-  - 'defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false'
-  - 'defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false'
-  - 'defaults write NSGlobalDomain AppleKeyboardUIMode -int 3'
-  - 'defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false'
-  - 'defaults write NSGlobalDomain KeyRepeat -int 0'
-  - 'defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true'
-  - 'defaults write com.apple.Finder AppleShowAllFiles -bool true'
-  - 'defaults write NSGlobalDomain AppleShowAllExtensions -bool true'
-  - 'defaults write com.apple.finder ShowStatusBar -bool true'
-  - 'defaults write com.apple.finder QLEnableTextSelection -bool true'
-  - 'defaults write com.apple.finder _FXShowPosixPathInTitle -bool true'
-  - 'defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false'
-  - 'defaults write com.apple.finder FXPreferredViewStyle Clmv'
-  - 'defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true'
-  - 'defaults write com.apple.frameworks.diskimages skip-verify -bool true'
-  - 'defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true'
-  - 'defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true'
-  - 'defaults write com.apple.dock tilesize -int 36'
-  - 'defaults write com.apple.dock expose-animation-duration -float 0.1'
-  - 'defaults write com.apple.dock "expose-group-by-app" -bool true'
-  - 'defaults write com.apple.dock autohide -bool true'
-  - 'defaults write com.apple.dock autohide-delay -float 0'
-  - 'defaults write com.apple.dock autohide-time-modifier -float 0'
-  - 'defaults write com.apple.Safari IncludeInternalDebugMenu -bool true'
-  - 'defaults write com.apple.Safari IncludeDevelopMenu -bool true'
-  - 'defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true'
-  - 'defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true'
-  - 'defaults write NSGlobalDomain WebKitDeveloperExtras -bool true'
-  - 'defaults write com.apple.terminal StringEncodings -array 4'
   - 'chflags nohidden ~/Library'
+
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# Top left screen corner → Mission Control
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 0
+
+# Top right screen corner → Desktop
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0
+
+# Bottom left screen corner → Start screen saver
+# defaults write com.apple.dock wvous-bl-corner -int 5
+# defaults write com.apple.dock wvous-bl-modifier -int 0
+
+
+###############################################################################
+# Add separate playbooks for these apps/utils
+
+###############################################################################
+# Twitter.app                                                                 #
+###############################################################################
+
+# Disable smart quotes as it’s annoying for code tweets
+# defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool false
+
+# Show the app window when clicking the menu bar icon
+# defaults write com.twitter.twitter-mac MenuItemBehavior -int 1
+
+# Enable the hidden ‘Develop’ menu
+# defaults write com.twitter.twitter-mac ShowDevelopMenu -bool true
+
+# Open links in the background
+# defaults write com.twitter.twitter-mac openLinksInBackground -bool true
+
+# Allow closing the ‘new tweet’ window by pressing `Esc`
+# defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
+
+# Show full names rather than Twitter handles
+# defaults write com.twitter.twitter-mac ShowFullNames -bool true
+
+# Hide the app in the background if it’s not the front-most window
+# defaults write com.twitter.twitter-mac HideInBackground -bool true
+
+###############################################################################
+# Terminal & iTerm 2                                                          #
+###############################################################################
+
+# Use a modified version of the Solarized Dark theme by default in Terminal.app
+# TERM_PROFILE='Solarized Dark xterm-256color';
+# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
+# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+#   open "${HOME}/init/${TERM_PROFILE}.terminal";
+#   sleep 1; # Wait a bit to make sure the theme is loaded
+#   defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
+#   defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
+# fi;
+
+# Enable “focus follows mouse” for Terminal.app and all X11 apps
+# i.e. hover over a window and start typing in it without clicking first
+##defaults write com.apple.terminal FocusFollowsMouse -bool true
+##defaults write org.x.X11 wm_ffm -bool true
+
+# Install the Solarized Dark theme for iTerm
+# open "${HOME}/init/Solarized Dark.itermcolors"
+
+# Don’t display the annoying prompt when quitting iTerm
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+###############################################################################
+# GPGMail 2                                                                   #
+###############################################################################
+
+# Disable signing emails by default
+# defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false
+
+###############################################################################
+# Spotlight                                                                   #
+###############################################################################
+
+# Hide Spotlight tray-icon (and subsequent helper)
+#sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+
+# Disable Spotlight indexing for any volume that gets mounted and has not yet
+# been indexed before.
+# Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+
+# Change indexing order and disable some file types
+# defaults write com.apple.spotlight orderedItems -array \
+#   '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+#   '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+#   '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+#   '{"enabled" = 1;"name" = "PDF";}' \
+#   '{"enabled" = 1;"name" = "FONTS";}' \
+#   '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+#   '{"enabled" = 0;"name" = "MESSAGES";}' \
+#   '{"enabled" = 0;"name" = "CONTACT";}' \
+#   '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+#   '{"enabled" = 0;"name" = "IMAGES";}' \
+#   '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+#   '{"enabled" = 0;"name" = "MUSIC";}' \
+#   '{"enabled" = 0;"name" = "MOVIES";}' \
+#   '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+#   '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+#   '{"enabled" = 0;"name" = "SOURCE";}'
+
+# Load new settings before rebuilding the index
+# killall mds > /dev/null 2>&1
+
+# Make sure indexing is enabled for the main volume
+# sudo mdutil -i on / > /dev/null
+
+# Rebuild the index from scratch
+# sudo mdutil -E / > /dev/null
+
+###############################################################################
+# Dock, Dashboard, and hot corners                                            #
+###############################################################################
+
+# Reset Launchpad, but keep the desktop wallpaper intact
+# find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+
+# Add iOS Simulator to Launchpad
+# sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app"
+
+# Add a spacer to the left side of the Dock (where the applications are)
+#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# Add a spacer to the right side of the Dock (where the Trash is)
+#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Show item info near icons on the desktop and in other icon views
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+
+# Show item info to the right of the icons on the desktop
+# /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
+
+# Enable snap-to-grid for icons on the desktop and in other icon views
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+# Increase grid spacing for icons on the desktop and in other icon views
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+
+# Increase the size of icons on the desktop and in other icon views
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+
+# Enable the MacBook Air SuperDrive on any Mac
+# sudo nvram boot-args="mbasd=1"
+
+# Show the ~/Library folder
+# chflags nohidden ~/Library
+
+# Remove Dropbox’s green checkmark icons in Finder
+# file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
+# [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+
