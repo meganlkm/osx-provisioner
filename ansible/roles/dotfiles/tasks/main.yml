@@ -1,13 +1,13 @@
 ---
 # file: roles/dotfiles/tasks/main.yml
 
-- name: copy dotfiles
-  copy: src={{ item }} dest=~/.{{ item }}
-  with_items: mydotfiles
-
 # TODO if vimrc was added is there anything else that needs to be done?
 #      cd ~/ ; mkdir .vim .vim/bundle .vim/backup .vim/swap .vim/cache .vim/undo; git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
 #      then open vim and execute :BundleInstall
 
-# TODO add sublime preferences to dotfiles
-#       add list of packages to install
+# TODO rsync dot files to ~/config and sym link to appropriate locations
+
+
+- name: copy dotfiles
+  copy: src={{ item }} dest=~/.{{ item }}
+  with_items: mydotfiles
