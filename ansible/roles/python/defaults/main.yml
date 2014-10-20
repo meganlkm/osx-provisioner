@@ -1,6 +1,9 @@
 ---
 # file: roles/python/defaults/main.yml
 
+easy_install_pkgs:
+  - pip
+
 pip_pkgs:
   - autopep8
   - boto

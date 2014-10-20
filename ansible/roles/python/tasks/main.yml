@@ -1,10 +1,13 @@
 ---
 # file: roles/python/tasks/main.yml
 
-- name: easy_install | install pip
-  easy_install: name=pip
+- name: python |  packages easy_install
+  easy_install:
+    name: {{ item }}
+with_items: easy_install_pkgs
 
-- name: pip | install pip
-  sudo: yes
-  pip: name={{ item }}
+- name: python | install pip packages
+  # sudo: yes
+  pip:
+    name: {{ item }}
   with_items: pip_pkgs
