@@ -1,0 +1,20 @@
+---
+# file: roles/brew/tasks/casks.yml
+
+- include_vars: casks.yml
+
+# - name: Check for installed apps
+#   shell: brew cask list | grep {{ item }}
+#   register: installed_applications
+#   with_items: casks
+#   ignore_errors: true
+
+# - name: print installed casks
+#   debug: msg="cask apps installed {{ installed_applications.results|map(attribute='stdout') }}"
+
+- name: brew::casks | install apps
+  homebrew_cask:
+    name: "{{ item }}"
+    state: installed
+  with_items: brew_casks
+  # when: item not in installed_applications.results|map(attribute='stdout')

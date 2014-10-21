@@ -1,0 +1,30 @@
+---
+# file: roles/brew/vars/casks.yml
+
+brew_casks:
+  - adium
+  - alfred
+  - appcleaner
+  # - bartender
+  # - caffeine
+  # - charles
+  # - iterm2
+  # - dropbox
+  - firefox
+  - flash
+  - google-chrome
+  - hipchat
+  # - little-snitch
+  # - mailbox
+  # - nvalt
+  - qlcolorcode
+  - qlmarkdown
+  - qlprettypatch
+  - qlstephen
+  - quicklook-json
+  # - shiori
+  # - size-up
+  - skype
+  - vagrant
+  - virtualbox
+  - valentina-studio
