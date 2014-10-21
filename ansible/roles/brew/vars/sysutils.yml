@@ -38,8 +38,8 @@ upgrade_pkgs:
   # - { name: 'perl518', options: '' } # must run "brew tap homebrew/versions" first!
   - { name: 'openssl', options: '' }
   - { name: 'openssh', options: 'with-brewed-openssl' }
-  - { name: 'python', options: 'framework,with-brewed-openssl' }
-  - { name: 'python3', options: 'framework,with-brewed-openssl' }
+  # - { name: 'python', options: 'framework,with-brewed-openssl' }
+  # - { name: 'python3', options: 'framework,with-brewed-openssl' }
   - { name: 'rsync', options: '' }
   - { name: 'svn', options: '' }
   - { name: 'unzip', options: '' }

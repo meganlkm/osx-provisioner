@@ -1,14 +1,15 @@
 ---
 # file: roles/python/defaults/main.yml
 
-easy_install_pkgs:
-  - pip
+pythons:
+  - { name: 'python', options: 'enable-framework,with-brewed-openssl' }
+  - { name: 'python3', options: 'enable-framework,with-brewed-openssl' }
 
 pip_pkgs:
   - autopep8
   - boto
   # - bpython
-  - Celery
+  # - Celery
   - coverage
   # - dulwich
   - fabric
@@ -22,21 +23,21 @@ pip_pkgs:
   # - mercurial
   - mock
   # - nose
-  - pandas
+  # - pandas
   - paramiko
   # - passlib
   - pep8
-  - pip-tools
+  # - pip-tools
   # - psdash
   - pylint
   # - psutil
   - pytest
   # - pythong
   - PyYAML
-  - redis
+  # - redis
   - requests
   # - see
-  - sendgrid
+  # - sendgrid
   # - six
   - SQLAlchemy
   # - Sphinx
