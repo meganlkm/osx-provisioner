@@ -8,10 +8,20 @@
 #   * defaults/main will contain all settings
 #   * option to set all variables in vars/main
 
-- name: osx-defaults | set system config
-  action: shell {{ item }}
-  with_items: sys_conf_defaults
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# - name: osx-defaults | set current host defaults
+#   shell: "defaults -currentHost write {{ item }}"
+#   with_items: current_host_defaults
 
+# this will be a nested loop... rethink this..
+# - name: osx-defaults | set user defaults
+#   action: shell {{ item }}
+#   with_items: user_defaults
+
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+- name: osx-defaults | finder plist settings
+  shell: "/usr/libexec/PlistBuddy -c  '{{ item }}' {{ finder_plist }}"
+  with_items: plistbuddy
 
 ###############################################################################
 # Kill affected applications                                                  #
