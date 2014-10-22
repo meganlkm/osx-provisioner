@@ -1,6 +1,35 @@
 ---
 # file: roles/osx-defaults/tasks/main.yml
 
-- name: osx-defaults | set system config
-  action: shell {{ item }}
-  with_items: sys_conf_defaults
+# TODO
+#   * finish defaults mapping
+#   * add tasks to execute all of the settings
+#   * add user friendly reference
+#   * defaults/main will contain all settings
+#   * option to set all variables in vars/main
+
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# - name: osx-defaults | set current host defaults
+#   shell: "defaults -currentHost write {{ item }}"
+#   with_items: current_host_defaults
+
+# this will be a nested loop... rethink this..
+# - name: osx-defaults | set user defaults
+#   action: shell {{ item }}
+#   with_items: user_defaults
+
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+- name: osx-defaults | finder plist settings
+  shell: "/usr/libexec/PlistBuddy -c  '{{ item }}' {{ finder_plist }}"
+  with_items: plistbuddy
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+# for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+#   "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+#   "Terminal" "Transmission" "Twitter" "iCal"; do
+#   killall "${app}" > /dev/null 2>&1
+# done
+# echo "Done. Note that some of these changes require a logout/restart to take effect."
