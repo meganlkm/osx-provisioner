@@ -30,6 +30,11 @@ function cdf() { # short for `cdfinder`
     cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
+# Always list directory contents upon 'cd'
+function cd() {
+    builtin cd "$@" && ls;
+}
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
     local tmpFile="${@%/}.tar";
