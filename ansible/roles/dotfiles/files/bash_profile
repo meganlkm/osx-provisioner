@@ -219,7 +219,7 @@ if test -d "${HOME}/sublime_projects"; then
     export ST3_PROJECTS="${HOME}/sublime_projects"
 
     # open project
-    sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project" ; }
+    sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project"; }
 
     # list projects
     alias subls="ls ${ST3_PROJECTS}/*.sublime-project"
@@ -230,7 +230,9 @@ fi
 #-------------------------------------------------------------------------------
 
 # load custom functions
-test -f "${HOME}/.functions" && source ${HOME}/.functions
+for dotfile in 'functions' 'venv_wrapper' 'mkpystuff'; do
+    test -f "${HOME}/.${dotfile}" && source ${HOME}/.${dotfile};
+done
 
 case $UNAME in
     MINGW32*)
