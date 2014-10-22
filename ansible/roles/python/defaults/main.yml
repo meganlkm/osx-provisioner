@@ -14,7 +14,7 @@ pip_pkgs:
   # - dulwich
   - fabric
   # - flake8
-  - Flask
+  # - Flask
   - green
   # - hieroglyph
   - httpie
@@ -41,6 +41,7 @@ pip_pkgs:
   # - six
   - SQLAlchemy
   # - Sphinx
+  - testrepository
   - tox
   # - unirest
   # - uWSGI
