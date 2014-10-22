@@ -63,6 +63,7 @@ brew_pkgs:
   # - the_silver_searcher
   # - tmate
   - tmux
+  - tree
   - unixodbc
   - urlview
   # - vcprompt
