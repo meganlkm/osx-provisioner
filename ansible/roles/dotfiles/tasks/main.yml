@@ -7,7 +7,8 @@
 
 # TODO rsync dot files to ~/config and sym link to appropriate locations
 
-
 - name: copy dotfiles
-  copy: src={{ item }} dest=~/.{{ item }}
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.{{ item }}"
   with_items: mydotfiles
