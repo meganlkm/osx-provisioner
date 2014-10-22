@@ -209,6 +209,12 @@ fi
 #-------------------------------------------------------------------------------
 # Sublime Text 3
 #-------------------------------------------------------------------------------
+
+# TODO only show project names
+# ([-\w+]+)\.[-\w+]+$
+# ls -1 /Users/mwood/sublime_projects/*.sublime-project | grep -Po '([-\w+]+)\.[-\w+]+$'
+# echo "/Users/mwood/sublime_projects/mystack.sublime-project" | grep -Po '([-\w+]+)\.[-\w+]+$'
+
 if test -d "${HOME}/sublime_projects"; then
     export ST3_PROJECTS="${HOME}/sublime_projects"
 
