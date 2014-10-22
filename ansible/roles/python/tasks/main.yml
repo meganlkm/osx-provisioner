@@ -49,11 +49,14 @@
   pip:
     name: "{{ item }}"
     # state: latest
-  with_items: pip_pkgs
+  with_items: local_pip_pkgs
 
 - name: python | install pip3 packages - py3
   pip:
     name: "{{ item }}"
     # state: latest
     executable: pip3
-  with_items: pip_pkgs
+  with_items: local_pip_pkgs
+
+# setup virtualenv and virtualenvwrapper
+# - include: venv.yml

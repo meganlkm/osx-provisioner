@@ -5,46 +5,62 @@ pythons:
   - { name: 'python', options: 'enable-framework,with-brewed-openssl' }
   - { name: 'python3', options: 'enable-framework,with-brewed-openssl' }
 
-pip_pkgs:
+venv:
+  home: "{{ ansible_env.HOME }}/dev/py_projects"
+  home_envs: "{{ venv.home }}/ENVS"
+  wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
+  pkgs:
+    - virtualenv
+    - virtualenvwrapper
+
+local_pip_pkgs:
   - autopep8
-  - boto
-  # - bpython
-  # - Celery
-  - coverage
-  # - dulwich
   - fabric
-  # - flake8
-  # - Flask
   - green
-  # - hieroglyph
   - httpie
   - jedi
   - jinja2
-  # - mercurial
+  - mercurial
   - mock
-  # - nose
-  # - pandas
   - paramiko
-  # - passlib
   - pep8
-  # - pip-tools
-  # - psdash
-  - pylint
-  # - psutil
-  - pytest
-  # - pythong
+  - pip-tools
   - PyYAML
-  # - redis
   - requests
-  # - see
-  # - sendgrid
-  # - six
-  - SQLAlchemy
-  # - Sphinx
-  - testrepository
   - tox
-  # - unirest
-  # - uWSGI
-  - virtualenv
-  - virtualenvwrapper
-  # - Werkzeug
+
+# pip_pkgs:
+#   - boto
+#   - bpython
+#   - Celery
+#   - coverage
+#   - dulwich
+#   - flake8
+#   - Flask
+#   - green
+#   - hieroglyph
+#   - httpie
+#   - jinja2
+#   - mock
+#   - nose
+#   - pandas
+#   - paramiko
+#   - passlib
+#   - psdash
+#   - pylint
+#   - psutil
+#   - pytest
+#   - pythong
+#   - PyYAML
+#   - redis
+#   - requests
+#   - see
+#   - sendgrid
+#   - six
+#   - SQLAlchemy
+#   - Sphinx
+#   - testrepository
+#   - tox
+#   - unirest
+#   - uWSGI
+#   - Werkzeug
