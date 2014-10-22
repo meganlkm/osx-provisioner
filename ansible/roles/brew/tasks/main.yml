@@ -2,7 +2,8 @@
 # file: roles/brew/tasks/main.yml
 
 - name: brew | update 1
-  homebrew: update_homebrew=yes
+  homebrew:
+    update_homebrew: yes
 
 - name: brew | tap
   homebrew_tap:
@@ -11,7 +12,9 @@
   with_items: brew_taps
 
 - name: brew | update 2
-  homebrew: update_homebrew=yes upgrade_all=yes
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
 
 - name: brew | install packages
   homebrew:
