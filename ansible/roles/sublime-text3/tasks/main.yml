@@ -7,25 +7,29 @@
 #   * https://sublime.wbond.net/docs/syncing
 
 - name: st3 | taps
-  homebrew_tap:
-    name: "{{ item }}"
-    state: present
-  with_items: st3_brew.taps
+ homebrew_tap:
+   name: "{{ item }}"
+   state: present
+ with_items: st3_brew.taps
 
 - name: st3 | install sublime-text3
   homebrew_cask:
     name: "{{ st3_brew.formula }}"
     state: present
 
+- name: st3 | ensure paths exists
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - st3_conf.installed_pkgs
+    - st3_conf.path
+    - st3_conf.user_pkg_path
+
 - name: st3 | get Package Control and put in Installed Packages directory
   get_url:
     url: "{{ st3_package_control.url }}"
     dest: "{{ st3_package_control.dest }}"
-
-- name: st3 | create config dir if it does not exist
-  file:
-    path: "{{ st3_conf.path }}"
-    state: directory
 
 - name: st3 | sync this config dir with the fs config dir
   synchronize:

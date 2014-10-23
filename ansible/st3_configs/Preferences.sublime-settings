@@ -25,9 +25,7 @@
     "highlight_modified_tabs": true,
     "ignored_packages":
     [
-        "SublimeCodeIntel",
-        "Vintage",
-        "Jedi - Python autocompletion"
+        "Vintage"
     ],
     "indent_guide_options":
     [
