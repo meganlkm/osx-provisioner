@@ -1,0 +1,6 @@
+{
+    "anaconda_gutter_theme": "bright",
+    "pep257": true,
+    "validate_imports": true,
+    "test_command": "green"
+}
