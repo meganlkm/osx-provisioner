@@ -19,6 +19,14 @@ function mkst3prj() {
     # TODO convert this to a template
     cat > $st3prj <<EOF
 {
+    "build_systems":
+    [
+        {
+            "name": "Anaconda Python Builder",
+            "selector": "source.python",
+            "shell_cmd": "${WORKON_HOME}/${prj}/bin/python -u \"$file\""
+        }
+    ],
     "folders":
     [
         {
@@ -31,7 +39,11 @@ function mkst3prj() {
             "follow_symlinks": true,
             "path": "${WORKON_HOME}/${prj}"
         }
-    ]
+    ],
+    "settings":
+    {
+        "python_interpreter": "${WORKON_HOME}/${prj}/bin/python"
+    }
 }
 EOF
     echo "cat ${st3prj}"
