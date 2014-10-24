@@ -15,15 +15,13 @@ venv:
 
 local_pip_pkgs:
   - autopep8
+  - awscli
   - fabric
-  - green
   - httpie
   - jedi
   - jinja2
   - mercurial
-  - mock
   - paramiko
-  - pep8
   - pip-tools
   - PyYAML
   - requests
