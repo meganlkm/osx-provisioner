@@ -7,4 +7,6 @@ mydotfiles:
   - bash_profile
   - gitconfig
   - green
+  - mkpystuff
+  - venv_wrapper
   - vimrc
