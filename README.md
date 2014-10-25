@@ -1,5 +1,12 @@
-osx-provisioner
-==============
+# osx-provisioner
+
+1. [Get It](#user-content-get-the-package)
+2. [Configure It](#user-content-reviewedit-variable-values-and-files)
+3. [Provision It](#user-content-only-install-what-you-want)
+
+[TODO](#user-content-todo)
+
+===
 
 ### get the package
 
