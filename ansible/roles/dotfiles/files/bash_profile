@@ -48,6 +48,7 @@ esac
 #-------------------------------------------------------------------------------
 test -f "${HOME}/.profile" && source ${HOME}/.profile
 test -f "${HOME}/.bash_aliases" && source ${HOME}/.bash_aliases
+# test -f "${HOME}/.bashrc" && source ${HOME}/.bashrc
 
 # texbin if it exists for LaTeX stuff
 test -d "/usr/texbin" && PATH="/usr/texbin:${PATH}"
@@ -60,7 +61,8 @@ test -d "${HOME}/.composer/vendor/bin" && PATH="${HOME}/.composer/vendor/bin:${P
 
 # ~/bin if it exists - want this checked first
 test -d "${HOME}/bin" && PATH="${HOME}/bin:${PATH}"
-export PATH=/usr/local/bin:$PATH
+
+export PATH="/usr/local/bin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # Env Configuration
@@ -175,120 +177,49 @@ parse_git_branch() {
 }
 
 #-------------------------------------------------------------------------------
-# Functions
-#-------------------------------------------------------------------------------
-
-cd() { builtin cd "$@"; ls; }               # Always list directory contents upon 'cd'
-mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
-trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
-ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
-
-# Usage: puniq [path]
-# Remove duplicate entries from a PATH style value while
-# retaining the original order.
-puniq() {
-    echo "$1" |tr : '\n' |nl |sort -u -k 2,2 |sort -n |
-    cut -f 2- |tr '\n' : |sed -e 's/:$//' -e 's/^://'
-}
-
-# mans:   Search manpage given in agument '1' for term given in argument '2' (case insensitive)
-#         displays paginated result with colored search terms and two lines surrounding each hit.             Example: mans mplayer codec
-#--------------------------------------------------------------------
-mans () {
-    man $1 | grep -iC2 --color=always $2 | less
-}
-
-# extract:  Extract most know archives with one command
-#---------------------------------------------------------
-extract () {
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
-}
-
-#---------------------------
-# 4.  SEARCHING
-#---------------------------
-
-# ff:       Find file under the current directory
-ff () { /usr/bin/find . -name "$@" ; }
-
-# ffs:      Find file whose name starts with a given string
-ffs () { /usr/bin/find . -name "$@"'*' ; }
-
-# ffe:      Find file whose name ends with a given string
-ffe () { /usr/bin/find . -name '*'"$@" ; }
-
-# spotlight: Search for a file using MacOS Spotlight's metadata
-spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
-
-# findPid: find out the pid of a specified process
-findPid () { lsof -t -c "$@" ; }
-
-# my_ps: List processes owned by my user:
-my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
-
-# ii:  display useful host related informaton
-ii() {
-    echo -e "${GRAY}${BOLD}system info:${PS_CLEAR}" ; uname -a
-    echo -e "${GRAY}${BOLD}public ip :${PS_CLEAR}" ; myip #set in .bash_aliases
-    echo -e "${GRAY}${BOLD}logged in users:${PS_CLEAR}" ; w -h
-    echo -e "${GRAY}${BOLD}date :${PS_CLEAR}" ; date
-    echo -e "${GRAY}${BOLD}uptime :${PS_CLEAR}" ; uptime
-    echo -e "${GRAY}${BOLD}network location :${PS_CLEAR}" ; scselect
-    echo -e "${GRAY}${BOLD}memory hogs :${PS_CLEAR}" ; memHogsPs #set in .bash_aliases
-    #echo -e "\n${RED}DNS Configuration:$PS_CLEAR " ; scutil --dns
-    echo
-}
-
-#-------------------------------------------------------------------------------
 # BREW
 #-------------------------------------------------------------------------------
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
 
 test -d "/Applications" &&
-    PATH="${PATH}:/Applications"
+    export PATH="/Applications:${PATH}"
 
 # why?
 # -bash: /usr/local/etc/grc.bashrc: Permission denied
 # mytmp=$(`brew --prefix`/etc/grc.bashrc)
 # test -f mytmp && source mytmp
 
-test -d "/usr/local/opt/coreutils/libexec/gnuman" &&
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
 mytmp=$(brew --prefix coreutils)
-test -d $mytmp &&
-    PATH="${mytmp}/libexec/gnubin:${PATH}"
+if [[ -d mytmp ]]; then
+    test -d "${mytmp}/libexec/gnuman" &&
+        export MANPATH="${mytmp}/libexec/gnuman:${MANPATH}"
+
+    test -d "${mytmp}/libexec/gnubin" &&
+        export PATH="${mytmp}/libexec/gnubin:${PATH}"
+fi
+
+test -d '/usr/local/sbin' &&
+    export PATH="/usr/local/sbin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # Python
 #-------------------------------------------------------------------------------
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+# export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 
 #-------------------------------------------------------------------------------
 # Sublime Text 3
 #-------------------------------------------------------------------------------
+
+# TODO only show project names
+# ([-\w+]+)\.[-\w+]+$
+# ls -1 /Users/mwood/sublime_projects/*.sublime-project | grep -Po '([-\w+]+)\.[-\w+]+$'
+# echo "/Users/mwood/sublime_projects/mystack.sublime-project" | grep -Po '([-\w+]+)\.[-\w+]+$'
+
 if test -d "${HOME}/sublime_projects"; then
     export ST3_PROJECTS="${HOME}/sublime_projects"
 
     # open project
-    sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project" ; }
+    sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project"; }
 
     # list projects
     alias subls="ls ${ST3_PROJECTS}/*.sublime-project"
@@ -297,6 +228,12 @@ fi
 #-------------------------------------------------------------------------------
 # User Shell Environment
 #-------------------------------------------------------------------------------
+
+# load custom functions
+for dotfile in 'functions' 'venv_wrapper' 'mkpystuff'; do
+    test -f "${HOME}/.${dotfile}" && source ${HOME}/.${dotfile};
+done
+
 case $UNAME in
     MINGW32*)
         # Don't condense path, since function doesn't work here.

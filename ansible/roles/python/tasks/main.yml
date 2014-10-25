@@ -1,7 +1,62 @@
 ---
 # file: roles/python/tasks/main.yml
 
-- name: pip | install pip
-  sudo: yes
-  pip: name={{ item }}
-  with_items: pip_pkgs
+# Troubleshooting:
+#   * brew un/install python
+#   * brew un/install python3
+#   * sudo easy_install --upgrade pip
+#   * brew un/install ansible
+
+- name: python | install brewed pythons
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: upgraded
+  with_items: pythons
+
+# this messes up system python
+# - name: python | brew link
+#   command: "brew link --overwrite {{ item.name }}"
+#   with_items: pythons
+
+- name: python | brew link py2
+  command: "brew link python"
+
+- name: python | brew link py3
+  command: "brew link --overwrite python3"
+
+- name: brew | cleanup
+  command: brew cleanup
+
+- name: python | upgrade pip and setuptools - py2
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pip
+    - setuptools
+
+- name: python | upgrade pip and setuptools - py3
+  pip:
+    name: "{{ item }}"
+    state: latest
+    executable: pip3
+  with_items:
+    - pip
+    - setuptools
+
+- name: python | install pip packages - py2
+  pip:
+    name: "{{ item }}"
+    # state: latest
+  with_items: local_pip_pkgs
+
+- name: python | install pip3 packages - py3
+  pip:
+    name: "{{ item }}"
+    # state: latest
+    executable: pip3
+  with_items: local_pip_pkgs
+
+# setup virtualenv and virtualenvwrapper
+# - include: venv.yml

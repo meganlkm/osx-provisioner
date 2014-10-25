@@ -7,18 +7,15 @@ brew_taps:
   - homebrew/versions
   - nviennot/tmate
   - phinze/cask
-  - caskroom/homebrew-versions
+  - caskroom/versions
 
 brew_pkgs:
   - autoconf
-  - ansible
   - aspell
-  - bash
   - brew-cask
   - chromedriver
   # - cloc
   # - contacts
-  - coreutils
   - cowsay
   # - ctags
   - curl
@@ -34,17 +31,15 @@ brew_pkgs:
   - gdbm
   - gettext
   - geoip
-  - git
-  - git-extras
-  - gnu-sed
+  # - git-extras
   # - graphviz
   # - grc
   - htop-osx
   - icu4c
-  - imagemagick
   - jpeg
   - jq
-  - libgit2
+  - knock
+  # - libgit2
   - libpng
   # - libtiff
   - libtool
@@ -58,8 +53,6 @@ brew_pkgs:
   # - offline-imap
   - optipng
   # - ossp-uuid
-  - python
-  - python3
   - readline
   # - reattach-to-user-namespace
   - ruby
@@ -70,43 +63,14 @@ brew_pkgs:
   # - the_silver_searcher
   # - tmate
   - tmux
+  - tree
   - unixodbc
   - urlview
   # - vcprompt
-  - vim
   # - vimpager
   # - vnstat
   # - watchman
-  - wget
   # - wireshark
   # - xapian
   # - zeromq
   - zlib
-  # - zsh
-
-brew_casks:
-  - adium
-  - alfred
-  - appcleaner
-  # - bartender
-  # - caffeine
-  # - charles
-  # - iterm2
-  # - dropbox
-  - firefox
-  - flash
-  - google-chrome
-  # - little-snitch
-  # - mailbox
-  # - nvalt
-  - qlcolorcode
-  - qlmarkdown
-  - qlprettypatch
-  - qlstephen
-  - quicklook-json
-  # - shiori
-  # - size-up
-  - skype
-  - sublime-text3
-  - vagrant
-  - virtualbox

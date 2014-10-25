@@ -1,0 +1,23 @@
+---
+# file: roles/brew/tasks/sysutils.yml
+
+# TODO
+#   * if a new bash was installed add new path to /etc/shells
+#   * edit path in ~/.bash_profile echo export PATH='/usr/local/sbin:$PATH' >> ~/.bash_profile
+#   * iterm2
+
+- include_vars: sysutils.yml
+
+- name: brew::sysutils | upgrade preinstalled packages
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: upgraded
+  with_items: upgrade_pkgs
+
+- name: brew::sysutils | install gnu packages
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: upgraded
+  with_items: gnu_pkgs
