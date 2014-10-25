@@ -198,8 +198,8 @@ if [[ -d mytmp ]]; then
         export PATH="${mytmp}/libexec/gnubin:${PATH}"
 fi
 
-# test -d '/usr/local/sbin' &&
-#     export PATH="/usr/local/sbin:${PATH}"
+test -d '/usr/local/sbin' &&
+    export PATH="/usr/local/sbin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # Python
