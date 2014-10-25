@@ -1,0 +1,10 @@
+---
+# initialize my fs
+# file: roles/mkdirs/defaults/main.yml
+
+my_home: "{{ ansible_env.HOME }}"
+my_dirs:
+  - "{{ my_home }}/.config/mydots"
+  - "{{ my_home }}/bin"
+  - "{{ my_home }}/tmp"
+  - "{{ my_home }}/dev/test/shell"

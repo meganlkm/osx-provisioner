@@ -1,0 +1,8 @@
+---
+# file: roles/mkdirs/tasks/main.yml
+
+- name: mkdirs | ensure paths exists
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: my_dirs
