@@ -10,6 +10,11 @@ if ! command_exists "gcc"; then
     xcode-select --install
 fi
 
+# check for and install curl
+if ! command_exists "curl"; then
+    # TODO
+fi
+
 if ! command_exists "rvm"; then
     \curl -L https://get.rvm.io | bash -s stable --autolibs=read-fail --auto-dotfiles
     source ~/.rvm/scripts/rvm
