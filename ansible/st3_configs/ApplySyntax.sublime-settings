@@ -11,6 +11,10 @@
     // Put your custom syntax rules here:
     "syntaxes": [
         {
+            // "name": "requirementstxt",
+            // "rules": [
+            //     {"file_name": "*requirements.txt"}
+            // ]
             // "name": "ShellScript/Shell-Unix-Generic",
             // "rules": [
             //     {"file_name": ".*/dotfiles/.*"}

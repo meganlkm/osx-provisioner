@@ -2,5 +2,11 @@
     "anaconda_gutter_theme": "bright",
     "pep257": true,
     "validate_imports": true,
-    "test_command": "green"
+    "test_command": "green",
+    "pep257_ignore":
+    [
+        "D209",
+        "D205",
+        "D400"
+    ]
 }
