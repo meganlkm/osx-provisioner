@@ -51,6 +51,7 @@ local_pip_pkgs:
 #   - pythong
 #   - PyYAML
 #   - redis
+#   - rednose
 #   - requests
 #   - see
 #   - sendgrid
