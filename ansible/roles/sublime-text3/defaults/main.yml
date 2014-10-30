@@ -1,13 +1,15 @@
 ---
 # file: roles/sublime-text3/defaults/main.yml
 
+st3_role_name: "sublime-text3"
+
 # user sys config directory ---------------------------------------------------
 st3_cfg_default: "{{ ansible_env.HOME }}/.configs"
 st3_sys_conf_dir: "{{ app_configs | default(st3_cfg_default) }}/st3"
 
 # st3 preferences directory ---------------------------------------------------
-st3_prefs_dir_dest: "{{ st3_sys_conf_default_dir }}/st3"
-st3_my_prefs_src: "my_st3_configs/"
+st3_prefs_dir_dest: "{{ st3_sys_conf_dir }}/st3"
+st3_my_prefs_src: "roles/{{ st3_role_name }}/files/my_st3_prefs"
 
 # app lib directory -----------------------------------------------------------
 st3_app_lib: "{{ ansible_env.HOME }}/Library/Application\ Support/Sublime\ Text\ 3"
