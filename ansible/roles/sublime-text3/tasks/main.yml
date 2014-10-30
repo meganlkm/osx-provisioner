@@ -2,19 +2,24 @@
 # file: roles/sublime-text3/tasks/main.yml
 
 # TODO
-#   * move sublime text stuff from bash_profile to a st3 conf
 #   * append st3 conf to bash_profile
 #   * https://sublime.wbond.net/docs/syncing
 
 - name: st3 | brew taps
-  debug: msg="{{ item }}"
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
   with_items: st3_brew_taps
 
-- name: st3 | brew install app
-  debug: msg="{{ st3_cask_formula }}"
+- name: st3 | install app with brew cask
+  homebrew_cask:
+    name: "{{ st3_cask_formula }}"
+    state: present
 
 - name: st3 | ensure required directories exists
-  debug: msg="{{ item }}"
+  file:
+    path: "{{ item }}"
+    state: directory
   with_items:
     - "{{ st3_app_lib }}"
     - "{{ st3_app_pkg_installed }}"
@@ -22,19 +27,34 @@
     - "{{ st3_project_dir }}"
 
 - name: st3 | get Package Control and put in Installed Packages directory
-  debug: msg="url is {{ st3_package_control.url }} dest is {{ st3_package_control.dest }}"
+  get_url:
+    url: "{{ st3_package_control.url }}"
+    dest: "{{ st3_package_control.dest }}"
 
 - name: st3 | sync st3 preferences dir with the fs config dir
   synchronize:
     src: "{{ st3_my_prefs_src }}"
     dest: "{{ ansible_env.HOME }}/tmp/"
 
+- name: st3 | sync st3 preferences dir with the fs config dir
+  synchronize:
+    src: "{{ st3_my_prefs_src }}"
+    dest: "{{ st3_prefs_dir_dest }}"
+
 - name: st3 | remove existing User packages dir
-  debug: msg="{{ st3_app_pkg_user }}"
+  file:
+    path: "{{ st3_app_pkg_user }}"
+    state: absent
 
 - name: st3 | symlink st3 preferences
-  debug: msg="src is {{ st3_prefs_dir_dest }} dest is {{ st3_app_pkg_user }}"
+  file:
+    src: "{{ st3_prefs_dir_dest }}"
+    dest: "{{ st3_app_pkg_user }}"
+    force: yes
+    state: link
 
 - name: st3 | create preferences from templates
-  debug: msg="template is {{ item }}"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ st3_prefs_dir_dest }}/{{ item }}"
   with_items: st3_user_pkg_templates
