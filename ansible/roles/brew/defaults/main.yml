@@ -1,13 +1,11 @@
 ---
 # file: roles/brew/defaults/main.yml
 
-brew_taps:
-  - homebrew/dupes
-  - homebrew/science
-  - homebrew/versions
-  - nviennot/tmate
-  - phinze/cask
-  - caskroom/versions
+# brew_taps:
+  # - homebrew/science
+  # - homebrew/versions
+  # - nviennot/tmate
+  # - caskroom/versions
 
 brew_pkgs:
   - autoconf
@@ -28,7 +26,7 @@ brew_pkgs:
   - fortune
   - freetype
   - gd
-  - gdbm
+  # - gdbm
   - gettext
   - geoip
   # - git-extras
@@ -73,4 +71,3 @@ brew_pkgs:
   # - wireshark
   # - xapian
   # - zeromq
-  - zlib

@@ -3,18 +3,31 @@
 
 - include_vars: casks.yml
 
-# - name: Check for installed apps
-#   shell: brew cask list | grep {{ item }}
-#   register: installed_applications
-#   with_items: casks
-#   ignore_errors: true
+- name: brew::casks | add HOMEBREW_CASK_OPTS to env
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    line: "export HOMEBREW_CASK_OPTS='--appdir={{ brew_cask_appdir }} --caskroom={{ brew_cask_caskroom }}'"
 
-# - name: print installed casks
-#   debug: msg="cask apps installed {{ installed_applications.results|map(attribute='stdout') }}"
+- name: brew::casks | tap
+  homebrew_tap:
+    name: "{{ brew_cask_tap_name }}"
+    state: present
+
+- name: brew::casks | update
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: brew::casks | install cask
+  homebrew:
+    name: "{{ brew_cask_formula }}"
+    state: present
 
 - name: brew::casks | install apps
   homebrew_cask:
     name: "{{ item }}"
     state: installed
   with_items: brew_casks
-  # when: item not in installed_applications.results|map(attribute='stdout')
+
+- name: brew::casks | cleanup
+  command: /usr/local/bin/brew cask cleanup

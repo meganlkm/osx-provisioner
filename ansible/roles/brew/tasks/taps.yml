@@ -1,0 +1,23 @@
+---
+# file: roles/brew/tasks/taps.yml
+
+- include_vars: dupes.yml
+
+- name: brew:tap | install taps
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ brew_tap_dupes_name }}"
+
+- name: brew:tap | update
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: brew:tap | install packages
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: present
+  with_items: brew_tap_dupes_formulas

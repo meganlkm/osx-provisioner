@@ -22,8 +22,9 @@
     state: upgraded
   with_items: brew_pkgs
 
-- include: sysutils.yml
+- include: taps.yml
 - include: casks.yml
+- include: sysutils.yml
 
 - name: brew | linkapps
   command: /usr/local/bin/brew linkapps
