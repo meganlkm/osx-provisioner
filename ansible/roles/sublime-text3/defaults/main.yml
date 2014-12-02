@@ -12,8 +12,8 @@ st3_conf:
 
 st3_brew:
   taps:
-    - phinze/cask
-    - homebrew/versions
+    - caskroom/cask
+    - caskroom/versions
   formula: "sublime-text3"
 
 st3_project_dirs:
@@ -22,3 +22,4 @@ st3_project_dirs:
 st3_package_control:
     url: "https://sublime.wbond.net/Package%20Control.sublime-package"
     dest: "{{ st3_conf.installed_pkgs }}/Package\ Control.sublime-package"
+

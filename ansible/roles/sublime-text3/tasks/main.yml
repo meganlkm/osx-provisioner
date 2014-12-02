@@ -7,10 +7,10 @@
 #   * https://sublime.wbond.net/docs/syncing
 
 - name: st3 | taps
- homebrew_tap:
+  homebrew_tap:
    name: "{{ item }}"
    state: present
- with_items: st3_brew.taps
+  with_items: st3_brew.taps
 
 - name: st3 | install sublime-text3
   homebrew_cask:
@@ -59,3 +59,4 @@
     path: "{{ item }}"
     state: directory
   with_items: st3_project_dirs
+
