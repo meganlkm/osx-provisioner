@@ -1,12 +1,15 @@
 ---
 # file: roles/dotfiles/defaults/main.yml
 
+# TODO put st3 dotfile in st3 role
+
 mydotfiles:
   - bash_aliases
-  - functions
   - bash_profile
+  - functions
   - gitconfig
   - green
   - mkpystuff
+  - st3
   - venv_wrapper
   - vimrc
