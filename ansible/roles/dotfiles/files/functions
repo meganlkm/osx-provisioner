@@ -336,3 +336,12 @@ function ii() {
     #echo -e "\n${RED}DNS Configuration:$PS_CLEAR " ; scutil --dns
     echo
 }
+
+# append string to list of filenames
+function fappend() {
+    ext=$1; shift;
+    files=$@;
+    for f in $files; do
+        mv $f ${f}${ext};
+    done
+}
