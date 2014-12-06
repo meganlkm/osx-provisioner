@@ -207,30 +207,11 @@ test -d '/usr/local/sbin' &&
 # export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 
 #-------------------------------------------------------------------------------
-# Sublime Text 3
-#-------------------------------------------------------------------------------
-
-# TODO only show project names
-# ([-\w+]+)\.[-\w+]+$
-# ls -1 /Users/mwood/sublime_projects/*.sublime-project | grep -Po '([-\w+]+)\.[-\w+]+$'
-# echo "/Users/mwood/sublime_projects/mystack.sublime-project" | grep -Po '([-\w+]+)\.[-\w+]+$'
-
-if test -d "${HOME}/sublime_projects"; then
-    export ST3_PROJECTS="${HOME}/sublime_projects"
-
-    # open project
-    sublp () { subl --project "${ST3_PROJECTS}/${@}.sublime-project"; }
-
-    # list projects
-    alias subls="ls ${ST3_PROJECTS}/*.sublime-project"
-fi
-
-#-------------------------------------------------------------------------------
 # User Shell Environment
 #-------------------------------------------------------------------------------
 
 # load custom functions
-for dotfile in 'functions' 'venv_wrapper' 'mkpystuff'; do
+for dotfile in 'functions' 'venv_wrapper' 'mkpystuff' 'st3'; do
     test -f "${HOME}/.${dotfile}" && source ${HOME}/.${dotfile};
 done
 
@@ -253,3 +234,6 @@ prompt_color
 
 # set term title
 # trap 'echo -ne "\033]0;$PWD\007"' DEBUG
+
+export PATH=".:${PATH}"
+

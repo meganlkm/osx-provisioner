@@ -4,16 +4,27 @@
 # Sublime Text 3
 #-------------------------------------------------------------------------------
 
-# TODO make this a template in st3 role
-
 export ST3_PROJECTS="${HOME}/sublime_projects"
 
 [[ ! -d $ST3_PROJECTS ]] && mkdir -p $ST3_PROJECTS
 
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# opens the given location
+function s() {
+    if [ $# -eq 0 ]; then
+        subl .;
+    else
+        subl "$@";
+    fi;
+}
+
 # open project
-sublp () {
+function sublp () {
     subl --project "${ST3_PROJECTS}/${@}.sublime-project";
 }
 
 # list projects
 alias subls="find ${ST3_PROJECTS} -name \*.sublime-project -type f | sed 's|'\"${ST3_PROJECTS}\"'/\(.*\).sublime-project|\1|' | column -c 80"
+
+# Opens any file in sublime editor
+alias edit='subl'
