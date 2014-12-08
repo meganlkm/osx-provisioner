@@ -4,6 +4,12 @@
 # Sublime Text 3
 #-------------------------------------------------------------------------------
 
+# TODO
+#   sublp projectname autocomplete
+#   subls count projects
+#   subls search projects
+#   subls find in project
+
 export ST3_PROJECTS="${HOME}/sublime_projects"
 
 [[ ! -d $ST3_PROJECTS ]] && mkdir -p $ST3_PROJECTS
