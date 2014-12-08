@@ -337,6 +337,16 @@ function ii() {
     echo
 }
 
+# dash doc query
+function dashq() {
+    if [ ! $1 ]; then
+        echo "Usage: \`dashq {query} [doctest]\`";
+        return 1;
+    fi;
+    [[ $2 ]] && dashs="${2}:${1}" || dashs="${1}";
+    open dash://${dashs};
+}
+
 # append string to list of filenames
 function fappend() {
     ext=$1; shift;
