@@ -355,3 +355,13 @@ function fappend() {
         mv $f ${f}${ext};
     done
 }
+
+# convert tabs to spaces in all files with given ext in this dir
+function tabs2spaces() {
+    if [ ! $1 ]; then
+        echo "Usage: \`tabs2spaces {ext}\`";
+        return 1;
+    fi;
+    ext=$1; shift;
+    find . -name "*.${ext}" ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
+}
