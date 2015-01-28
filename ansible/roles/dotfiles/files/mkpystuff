@@ -44,10 +44,9 @@ function mkst3prj() {
     {
         "python_interpreter": "${WORKON_HOME}/${prj}/bin/python",
         "anaconda_debug": true,
-        "anaconda_linting": true,
-        "anaconda_linting_behaviour": "always",
-        "test_command": "python -m unittest discover",
-        "use_pylint": false
+        "anaconda_gutter_theme": "bright",
+        "anaconda_linter_mark_style": "outline",
+        "anaconda_linter_underlines": true
     }
 }
 EOL

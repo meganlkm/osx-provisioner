@@ -1,6 +1,9 @@
 {
-    "anaconda_gutter_theme": "bright",
+    "anaconda_gutter_theme": "basic",
+    "anaconda_linter_mark_style": "none",
+    "anaconda_linter_underlines": true,
     "pep257": true,
     "validate_imports": true,
-    "test_command": "green"
+    "rulers": [99],
+    "wrap_width": 100
 }
