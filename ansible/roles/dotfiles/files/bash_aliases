@@ -101,6 +101,15 @@ alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
 alias unittest='python -m unittest -vvvv'
 
 #---------------------------
+# Brew - gapple/services
+# http://robots.thoughtbot.com/starting-and-stopping-background-services-with-homebrew
+#---------------------------
+alias srv:restart='brew services restart'
+alias srv:stop='brew services stop'
+alias srv:start='brew services start'
+alias srv:list='brew services list'
+
+#---------------------------
 # OTHERS
 #---------------------------
 alias be='bundle exec'

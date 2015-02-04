@@ -1,7 +1,8 @@
 ---
 # file: roles/brew/defaults/main.yml
 
-# brew_taps:
+brew_taps:
+  - gapple/services
   # - homebrew/science
   # - homebrew/versions
   # - nviennot/tmate

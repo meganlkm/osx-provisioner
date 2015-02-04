@@ -56,3 +56,4 @@ sh init.sh
 4. readmes for each role
 5. move st3_configs to sublime-text3 role
 6. install curl if it does not exist before installing rvm
+7. clean up brew role
