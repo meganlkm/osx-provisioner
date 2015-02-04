@@ -28,7 +28,7 @@ brew_casks:
   # - little-snitch
   # - mailbox
   - mou
-  # - nvalt
+  - nvalt
   - qlcolorcode
   - qlmarkdown
   - qlprettypatch
@@ -36,6 +36,7 @@ brew_casks:
   - quicklook-json
   # - shiori
   # - size-up
+  - skim
   # - skype
   - vagrant
   - virtualbox
