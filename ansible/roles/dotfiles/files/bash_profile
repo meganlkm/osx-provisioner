@@ -96,8 +96,6 @@ FIGNORE="~:CVS:#:.pyc"
 HISTCONTROL=ignoreboth
 export HISTFILESIZE=5000
 
-export GREP_OPTIONS='--color=auto'
-
 #-------------------------------------------------------------------------------
 # Editor and Pager
 #-------------------------------------------------------------------------------
