@@ -23,7 +23,6 @@
   with_items: brew_pkgs
 
 - include: taps.yml
-- include: casks.yml
 - include: sysutils.yml
 
 - name: brew | linkapps

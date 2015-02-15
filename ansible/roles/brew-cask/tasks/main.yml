@@ -1,0 +1,44 @@
+---
+# file: roles/brew-cask/tasks/main.yml
+
+- name: add HOMEBREW_CASK_OPTS to env
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    line: "export HOMEBREW_CASK_OPTS='--appdir={{ brew_cask_appdir }} --caskroom={{ brew_cask_caskroom }}'"
+
+- name: ensure caskroom path exists
+  command: "sudo /bin/mkdir {{ brew_cask_caskroom }}"
+
+- name: change owner of caskroom
+  command: "sudo /usr/sbin/chown {{ brew_cask_user }} {{ brew_cask_caskroom }}"
+
+# TODO this doesn't work
+# - name: ensure caskroom path exists
+#   file:
+#     path: "{{ brew_cask_caskroom }}"
+#     owner: "{{ ansible_env.SUDO_USER }}"
+#     state: directory
+
+- name: tap the caskroom repository
+  homebrew_tap:
+    name: "{{ brew_cask_tap_name }}"
+    state: present
+
+- name: update and upgrade brew
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: install brew cask
+  homebrew:
+    name: "{{ brew_cask_formula }}"
+    state: present
+
+- name: install cask apps
+  homebrew_cask:
+    name: "{{ item }}"
+    state: installed
+  with_items: install_casks
+
+- name: brew cask | cleanup
+  command: /usr/local/bin/brew cask cleanup
