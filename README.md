@@ -26,6 +26,8 @@ git clone https://github.com/meganlkm/osx-provisioner.git
 
 - ansible/roles/brew/defaults/*.yml
 - ansible/roles/brew/vars/*.yml
+- ansible/roles/brew-cask/defaults/main.yml
+- ansible/roles/brew-cask/vars/main.yml (***important***: change `brew_cask_user`)
 - ansible/roles/dotfiles/defaults/*.yml
 - ansible/roles/dotfiles/files/*
 - ansible/roles/mkdirs/defaults/*.yml
