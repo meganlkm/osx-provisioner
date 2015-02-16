@@ -12,7 +12,7 @@
     name: "{{ item.name }}"
     install_options: "{{ item.options }}"
     state: upgraded
-  with_items: pythons
+  with_items: py_pythons
 
 # this messes up system python
 # - name: python | brew link
@@ -32,31 +32,57 @@
   pip:
     name: "{{ item }}"
     state: latest
-  with_items:
-    - pip
-    - setuptools
+  with_items: py_pip_upgrade_pkgs
 
 - name: python | upgrade pip and setuptools - py3
   pip:
     name: "{{ item }}"
     state: latest
     executable: pip3
-  with_items:
-    - pip
-    - setuptools
+  with_items: py_pip_upgrade_pkgs
 
 - name: python | install pip packages - py2
   pip:
     name: "{{ item }}"
-    # state: latest
-  with_items: local_pip_pkgs
+  with_items: py_pip_local_pkgs
 
 - name: python | install pip3 packages - py3
   pip:
     name: "{{ item }}"
-    # state: latest
     executable: pip3
-  with_items: local_pip_pkgs
+  with_items: py_pip_local_pkgs
 
+##########################################
 # setup virtualenv and virtualenvwrapper
-# - include: venv.yml
+##########################################
+
+- name: virtualenv | ensure workon path exists
+  file:
+    path: "{{ py_venv_home_envs }}"
+    state: directory
+
+- name: virtualenv | install pip packages
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: py_venv_pkgs
+
+##########################################
+# dot files & other configs
+##########################################
+
+- name: copy config files to app config directory
+  copy:
+    src: "{{ item }}"
+    dest: "{{ app_configs }}/.{{ item }}"
+  with_items: py_dot_files
+
+- name: create python config loader
+  template:
+    src: "pyrc.j2"
+    dest: "{{ ansible_env.HOME }}/.pyrc"
+
+- name: load pyrc at session start
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    line: "test -f {{ ansible_env.HOME }}/.pyrc && source {{ ansible_env.HOME }}/.pyrc;"

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# TODO py-ify and ansible-fy this
+#       append source .mypystuff to .bash_profile
+
+function get_st3_prj_file() {
+    printf "${ST3_PROJECTS}/${@}.sublime-project"
+}
+
+function mkst3prj() {
+    prj=$@
+    st3prj=$(get_st3_prj_file ${prj})
+    # what if project file exists?
+    if [[ -f $st3prj ]]; then
+        echo "project file already exists: [${st3prj}]";
+        return 0;
+    fi
+
+    # TODO convert this to a template
+    cat > $st3prj <<EOL
+{
+    "build_systems":
+    [
+        {
+            "name": "Anaconda Python Builder",
+            "selector": "source.python",
+            "shell_cmd": "python -u \"$file\""
+        }
+    ],
+    "folders":
+    [
+        {
+            "name": "${prj} - source",
+            "follow_symlinks": true,
+            "path": "${PROJECT_HOME}/${prj}"
+        },
+        {
+            "name": "${prj} - env",
+            "follow_symlinks": true,
+            "path": "${WORKON_HOME}/${prj}"
+        }
+    ],
+    "settings":
+    {
+        "python_interpreter": "${WORKON_HOME}/${prj}/bin/python",
+        "anaconda_debug": true,
+        "anaconda_gutter_theme": "bright",
+        "anaconda_linter_mark_style": "outline",
+        "anaconda_linter_underlines": true
+    }
+}
+EOL
+    echo "cat ${st3prj}"
+}
+
+function mkpy() {
+    myprj=$@
+    # TODO confirm project name is valid
+
+    if [[ $(mkst3prj $myprj) ]]; then
+        mkproject $myprj
+        subl --project "$(get_st3_prj_file $myprj)"
+    fi
+}

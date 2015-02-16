@@ -1,0 +1,3 @@
+run-coverage = True
+verbose = 2
+logging = True

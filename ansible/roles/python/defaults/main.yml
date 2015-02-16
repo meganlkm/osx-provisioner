@@ -1,64 +1,30 @@
 ---
 # file: roles/python/defaults/main.yml
 
-pythons:
+py_pythons:
   - { name: 'python', options: 'enable-framework,with-brewed-openssl' }
   - { name: 'python3', options: 'enable-framework,with-brewed-openssl' }
 
-venv:
-  home: "{{ ansible_env.HOME }}/dev/py_projects"
-  home_envs: "{{ venv.home }}/ENVS"
-  wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
-  pkgs:
-    - virtualenv
-    - virtualenvwrapper
+py_pip_upgrade_pkgs:
+  - pip
+  - setuptools
 
-local_pip_pkgs:
-  - autopep8
-  - awscli
-  - fabric
+py_pip_local_pkgs:
   - httpie
   - jedi
   - jinja2
-  - mercurial
   - paramiko
   - pip-tools
   - PyYAML
-  - requests
-  - tox
 
-# pip_pkgs:
-#   - boto
-#   - bpython
-#   - Celery
-#   - coverage
-#   - dulwich
-#   - flake8
-#   - Flask
-#   - green
-#   - hieroglyph
-#   - httpie
-#   - jinja2
-#   - mock
-#   - nose
-#   - pandas
-#   - paramiko
-#   - passlib
-#   - psdash
-#   - pylint
-#   - psutil
-#   - pytest
-#   - pythong
-#   - PyYAML
-#   - redis
-#   - requests
-#   - see
-#   - sendgrid
-#   - six
-#   - SQLAlchemy
-#   - Sphinx
-#   - testrepository
-#   - tox
-#   - unirest
-#   - uWSGI
-#   - Werkzeug
+py_dot_files:
+  - mkpystuff
+  - Python.gitignore
+  - venv_wrapper
+
+py_venv_home: "{{ ansible_env.HOME }}/dev"
+py_venv_home_envs: "{{ py_venv_home }}/ENVS"
+py_venv_wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
+py_venv_pkgs:
+  - virtualenv
+  - virtualenvwrapper
