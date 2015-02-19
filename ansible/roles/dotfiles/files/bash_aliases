@@ -97,8 +97,24 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 #---------------------------
 # PYTHON
 #---------------------------
+alias rmpyc="find . -name '*.pyc' -exec rm '{}' ';'"
+alias djm="python manage.py"
+alias djrun="python manage.py runserver"
+alias djtest="python manage.py test"
+alias dgits='diff -x .git -x __pycache__ -x *.pyc -x *.coverage -rq'
 alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
 alias unittest='python -m unittest -vvvv'
+
+#---------------------------
+# Databases
+#---------------------------
+
+alias sqldev='sh ${HOME}/Applications/SQLDeveloper.app/Contents/MacOS/sqldeveloper.sh'
+
+if [[ -d '/usr/local/var/postgres' ]]; then
+    alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+    alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+fi
 
 #---------------------------
 # Brew - gapple/services
@@ -133,5 +149,4 @@ alias ghost='printf "\n༼ つ ◕_◕ ༽つ\n"'
 alias ibook='open -a iBooks'
 alias preview='open -a Preview'
 
-alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias dirsize='du -hs */*'

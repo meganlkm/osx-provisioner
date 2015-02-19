@@ -177,15 +177,6 @@ parse_git_branch() {
 #-------------------------------------------------------------------------------
 # BREW
 #-------------------------------------------------------------------------------
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
-
-test -d "/Applications" &&
-    export PATH="/Applications:${PATH}"
-
-# why?
-# -bash: /usr/local/etc/grc.bashrc: Permission denied
-# mytmp=$(`brew --prefix`/etc/grc.bashrc)
-# test -f mytmp && source mytmp
 
 mytmp=$(brew --prefix coreutils)
 if [[ -d mytmp ]]; then
@@ -198,11 +189,6 @@ fi
 
 test -d '/usr/local/sbin' &&
     export PATH="/usr/local/sbin:${PATH}"
-
-#-------------------------------------------------------------------------------
-# Python
-#-------------------------------------------------------------------------------
-# export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
 
 #-------------------------------------------------------------------------------
 # User Shell Environment
