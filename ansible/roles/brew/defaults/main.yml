@@ -9,17 +9,16 @@ brew_taps:
   # - caskroom/versions
 
 brew_pkgs:
-  - autoconf
   - aspell
-  - brew-cask
+  - autoconf
   - chromedriver
   # - cloc
   # - contacts
   - cowsay
   # - ctags
   - curl
-  - ec2-api-tools
   - dos2unix
+  - ec2-api-tools
   - exiftool
   - fdupes
   - figlet
@@ -34,30 +33,34 @@ brew_pkgs:
   # - graphviz
   # - grc
   - htop-osx
+  - httpie
   - icu4c
   - jpeg
   - jq
-  - knock
+  # - knock
   # - libgit2
   - libpng
   # - libtiff
   - libtool
   - libyaml
-  - mcrypt
+  #- mcrypt
   - mhash
   # - mtr
   # - ncdu
+  - node
   - nmap
   # - notmuch
   # - offline-imap
   - optipng
   # - ossp-uuid
+  - pianobar
   - readline
   # - reattach-to-user-namespace
   - ruby
   # - selenium-server-standalone
   - sqlite
   - ssh-copy-id
+  # - stunnel
   # - task
   # - the_silver_searcher
   # - tmate

@@ -26,6 +26,7 @@ install_casks:
   # - google-chrome-canary
   # - hipchat
   # - imageoptim
+  # - isolator
   # - iterm2
   # - keepassx
   # - limechat
