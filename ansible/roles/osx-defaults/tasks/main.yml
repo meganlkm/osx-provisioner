@@ -1,6 +1,9 @@
 ---
 # file: roles/osx-defaults/tasks/main.yml
 
+# - name: osx-defaults | set system config
+#   action: shell {{ item }}
+#   with_items: sys_conf_defaults
+
 - name: osx-defaults | set system config
-  action: shell {{ item }}
-  with_items: sys_conf_defaults
+  script: ../files/osxdefaults.sh

@@ -38,7 +38,11 @@
   homebrew_cask:
     name: "{{ item }}"
     state: installed
-  with_items: install_casks
+  with_items: brew_cask_install_apps
 
 - name: brew cask | cleanup
   command: /usr/local/bin/brew cask cleanup
+
+- name: set osx app defaults
+  action: shell {{ item }}
+  with_items: brew_cask_osx_app_defaults

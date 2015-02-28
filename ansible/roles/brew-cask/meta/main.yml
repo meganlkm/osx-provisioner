@@ -1,5 +1,5 @@
 ---
-file: roles/brew-cask/meta/main.yml
+# file: roles/brew-cask/meta/main.yml
 
 dependencies:
   - { role: brew }
