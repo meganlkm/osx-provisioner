@@ -31,7 +31,7 @@ git clone https://github.com/meganlkm/osx-provisioner.git
 - ansible/roles/dotfiles/defaults/*.yml
 - ansible/roles/dotfiles/files/*
 - ansible/roles/mkdirs/defaults/*.yml
-- ansible/roles/osx-defaults/defaults/*.yml
+- ansible/roles/osx-defaults/files/osxdefaults.sh
 - ansible/roles/python/defaults/*.yml
 - ansible/roles/ssh/defaults/*.yml
 - ansible/roles/sublime-text3/defaults/*.yml
@@ -58,4 +58,3 @@ sh init.sh
 4. readmes for each role
 5. move st3_configs to sublime-text3 role
 6. install curl if it does not exist before installing rvm
-7. clean up brew role
