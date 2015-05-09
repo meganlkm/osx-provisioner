@@ -42,6 +42,8 @@ alias hi='history | tail -20'
 alias dgits='diff -x .git -x __pycache__ -x *.pyc -x *.coverage -rq'
 alias grepr='grep -Hrn'
 
+# recursive dos2unix
+alias dos2unixr='find . -type f -exec dos2unix {} \;'
 #---------------------------
 # GIT
 #---------------------------
