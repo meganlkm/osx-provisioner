@@ -1,30 +1,26 @@
 ---
 # file: roles/python/defaults/main.yml
 
-py_pythons:
+python_pythons:
   - { name: 'python', options: 'enable-framework,with-brewed-openssl' }
   - { name: 'python3', options: 'enable-framework,with-brewed-openssl' }
 
-py_pip_upgrade_pkgs:
+python_pip_upgrade_pkgs:
   - pip
   - setuptools
 
-py_pip_local_pkgs:
-  - httpie
-  - jedi
+python_pip_local_pkgs:
   - jinja2
-  - paramiko
   - pip-tools
   - PyYAML
 
-py_dot_files:
+python_dot_files:
   - mkpystuff
-  - Python.gitignore
   - venv_wrapper
 
-py_venv_home: "{{ ansible_env.HOME }}/dev"
-py_venv_home_envs: "{{ py_venv_home }}/ENVS"
-py_venv_wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
-py_venv_pkgs:
+python_venv_home: "{{ ansible_env.HOME }}/dev"
+python_venv_home_envs: "{{ python_venv_home }}/ENVS"
+python_venv_wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
+python_venv_pkgs:
   - virtualenv
   - virtualenvwrapper

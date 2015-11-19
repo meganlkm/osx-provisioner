@@ -13,13 +13,18 @@
     state: directory
     mode: 0775
     owner: "{{ lookup('env','USER') }}"
-    group: "admin"
+    group: admin
     recurse: yes
 
 - name: update and upgrade brew
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
+
+- name: taps
+  homebrew_tap:
+    name: caskroom/cask
+    state: present
 
 - name: install brew-cask
   homebrew:
