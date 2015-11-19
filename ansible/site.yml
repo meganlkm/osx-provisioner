@@ -8,7 +8,6 @@
     - brew-sysutils
     - brew-dupes
     - brew-cask
-    - osx-defaults
     - python
     - dotfiles
     - ssh
