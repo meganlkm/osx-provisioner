@@ -1,0 +1,28 @@
+---
+brew_dupes_taps:
+  - { 'name': 'homebrew/dupes' }
+brew_dupes_pkgs:
+  - { name: 'diffstat', options: '' }
+  - { name: 'diffutils', options: '' }
+  - { name: 'ed', options: 'default-names' }
+  - { name: 'expect', options: '' }
+  - { name: 'file-formula', options: '' }
+  - { name: 'gpatch', options: '' }
+  - { name: 'gperf', options: '' }
+  - { name: 'grep', options: 'default-names' }
+  - { name: 'groff', options: '' }
+  - { name: 'gzip', options: '' }
+  - { name: 'less', options: '' }
+  - { name: 'm4', options: '' }
+  - { name: 'make', options: '' }
+  - { name: 'nano', options: '' }
+  - { name: 'ncurses', options: '' }
+  - { name: 'openldap', options: '' }
+  - { name: 'openssh', options: 'with-brewed-openssl' }
+  - { name: 'rsync', options: '' }
+  - { name: 'tcpdump', options: '' }
+  - { name: 'tidy', options: '' }
+  - { name: 'units', options: '' }
+  - { name: 'unzip', options: '' }
+  - { name: 'whois', options: '' }
+  - { name: 'zlib', options: '' }

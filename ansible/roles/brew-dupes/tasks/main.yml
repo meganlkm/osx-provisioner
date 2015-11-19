@@ -1,0 +1,26 @@
+---
+# file: roles/brew/tasks/main.yml
+
+- name: install taps
+  homebrew_tap:
+    name: "{{ item.name }}"
+    state: present
+  with_items: brew_dupes_taps
+
+- name: update brew
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: install packages
+  homebrew:
+    name: "{{ item.name }}"
+    install_options: "{{ item.options }}"
+    state: present
+  with_items: brew_dupes_pkgs
+
+- name: linkapps
+  command: /usr/local/bin/brew linkapps
+
+- name: cleanup
+  command: /usr/local/bin/brew cleanup
