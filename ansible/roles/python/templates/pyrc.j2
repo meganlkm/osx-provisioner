@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# load python stuff
-for dotfile in {{ py_dot_files | join(' ') }}; do
-    test -f "{{ app_configs }}/.${dotfile}" && source {{ app_configs }}/.${dotfile};
-done

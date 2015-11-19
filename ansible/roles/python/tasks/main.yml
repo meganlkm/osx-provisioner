@@ -22,8 +22,8 @@
 - name: brew link py2
   command: brew link python
 
-- name: brew link py3
-  command: brew link --overwrite python3
+# - name: brew link py3
+#   command: brew link --overwrite python3
 
 - name: cleanup
   command: brew cleanup
@@ -37,13 +37,13 @@
     - pip
     - virtualenv
 
-- name: upgrade pip and setuptools - py3
-  pip:
-    name: "{{ item }}"
-    state: latest
-    executable: pip3
-    extra_args: '--upgrade'
-  with_items: python_pip_upgrade_pkgs
+# - name: upgrade pip and setuptools - py3
+#   pip:
+#     name: "{{ item }}"
+#     state: latest
+#     executable: pip3
+#     extra_args: '--upgrade'
+#   with_items: python_pip_upgrade_pkgs
 
 - name: install pip packages - py2
   pip:
@@ -70,23 +70,3 @@
     name: "{{ item }}"
     state: latest
   with_items: python_venv_pkgs
-
-##########################################
-# dot files & other configs
-##########################################
-
-- name: copy config files to app config directory
-  copy:
-    src: "{{ item }}"
-    dest: "{{ app_configs }}/.{{ item }}"
-  with_items: python_dot_files
-
-- name: create python config loader
-  template:
-    src: "pyrc.j2"
-    dest: "{{ ansible_env.HOME }}/.pyrc"
-
-- name: load pyrc at session start
-  lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
-    line: "test -f {{ ansible_env.HOME }}/.pyrc && source {{ ansible_env.HOME }}/.pyrc;"
