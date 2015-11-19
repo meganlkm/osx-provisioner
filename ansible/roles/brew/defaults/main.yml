@@ -12,13 +12,9 @@ brew_pkgs:
   - aspell
   - autoconf
   - chromedriver
-  # - cloc
-  # - contacts
   - cowsay
-  # - ctags
   - curl
   - dos2unix
-  - ec2-api-tools
   - exiftool
   - fdupes
   - figlet
@@ -26,48 +22,52 @@ brew_pkgs:
   - fortune
   - freetype
   - gd
-  # - gdbm
   - gettext
-  - geoip
-  # - git-extras
-  # - graphviz
-  # - grc
   - htop-osx
   - httpie
   - icu4c
   - jpeg
   - jq
-  # - knock
-  # - libgit2
   - libpng
-  # - libtiff
   - libtool
   - libyaml
-  #- mcrypt
   - mhash
-  # - mtr
-  # - ncdu
   - node
   - nmap
-  # - notmuch
-  # - offline-imap
   - optipng
-  # - ossp-uuid
-  - pianobar
   - readline
-  # - reattach-to-user-namespace
-  - ruby
-  # - selenium-server-standalone
   - sqlite
   - ssh-copy-id
+  - tmux
+  - tree
+
+  # - cloc
+  # - contacts
+  # - ctags
+  # - ec2-api-tools
+  # - gdbm
+  # - geoip
+  # - git-extras
+  # - graphviz
+  # - grc
+  # - knock
+  # - libgit2
+  # - libtiff
+  # - mcrypt
+  # - mtr
+  # - ncdu
+  # - notmuch
+  # - offline-imap
+  # - ossp-uuid
+  # - pianobar
+  # - reattach-to-user-namespace
+  # - selenium-server-standalone
   # - stunnel
   # - task
   # - the_silver_searcher
   # - tmate
-  - tmux
-  - tree
-  - unixodbc
-  - urlview
+  # - unixodbc
+  # - urlview
   # - vcprompt
   # - vimpager
   # - vnstat

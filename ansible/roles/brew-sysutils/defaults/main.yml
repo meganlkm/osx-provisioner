@@ -1,7 +1,5 @@
 ---
-# file: roles/brew/vars/sysutils.yml
-
-gnu_pkgs:
+brew_sysutils_pkgs:
   - { name: 'binutils', options: '' }
   - { name: 'coreutils', options: '' }
   - { name: 'findutils', options: '' }
@@ -14,8 +12,6 @@ gnu_pkgs:
   - { name: 'watch', options: '' }
   - { name: 'wdiff', options: 'with-gettext'}
   - { name: 'wget', options: 'enable-iri' }
-
-upgrade_pkgs:
   - { name: 'ansible', options: '' }
   - { name: 'bash', options: '' }
   - { name: 'bash-completion', options: '' }
@@ -23,9 +19,4 @@ upgrade_pkgs:
   - { name: 'git', options: '' }
   - { name: 'gpatch', options: '' }
   - { name: 'imagemagick', options: 'with-webp' }
-  # - { name: 'macvim', options: 'override-system-vim,custom-system-icons' }
-  # - { name: 'perl518', options: '' } # must run "brew tap homebrew/versions" first!
   - { name: 'openssl', options: '' }
-  # - { name: 'svn', options: '' }
-  # - { name: 'vim', options: 'override-system-vi' }
-  # - { name: 'zsh', options: '' }
