@@ -12,6 +12,7 @@ brew_pkgs:
   - aspell
   - autoconf
   - chromedriver
+  - colordiff
   - cowsay
   - curl
   - dos2unix

@@ -21,16 +21,10 @@
 # Shell Options
 #-------------------------------------------------------------------------------
 shopt -s histappend
-
 test -r /etc/bash.bashrc && . /etc/bash.bashrc
 
-# Notify bg task completion immediately
 set -o notify
-
-# Fucking mail notifications
 unset MAILCHECK
-
-# default umask
 umask 0022
 
 # Terminal type
@@ -48,16 +42,7 @@ esac
 #-------------------------------------------------------------------------------
 test -f "${HOME}/.profile" && source ${HOME}/.profile
 test -f "${HOME}/.bash_aliases" && source ${HOME}/.bash_aliases
-# test -f "${HOME}/.bashrc" && source ${HOME}/.bashrc
-
-# texbin if it exists for LaTeX stuff
-test -d "/usr/texbin" && PATH="/usr/texbin:${PATH}"
-
-# Heroku toolbelt
-test -d "/usr/local/heroku/bin" && PATH="/usr/local/heroku/bin:${PATH}"
-
-# global composer
-test -d "${HOME}/.composer/vendor/bin" && PATH="${HOME}/.composer/vendor/bin:${PATH}"
+test -f "${HOME}/.bashrc" && source ${HOME}/.bashrc
 
 # ~/bin if it exists - want this checked first
 test -d "${HOME}/bin" && PATH="${HOME}/bin:${PATH}"
@@ -107,74 +92,6 @@ MANPAGER="$PAGER"
 export PAGER MANPAGER
 
 #-------------------------------------------------------------------------------
-# Colors / Formatting
-#-------------------------------------------------------------------------------
-# http://misc.flogisoft.com/bash/tip_colors_and_formatting
-WHITE='\033[1;37m'
-BLACK='\033[0;30m'
-BLUE='\033[0;34m'
-LIGHT_BLUE='\033[1;34m'
-GREEN='\033[0;32m'
-LIGHT_GREEN='\033[1;32m'
-CYAN='\033[0;36m'
-LIGHT_CYAN='\033[1;36m'
-RED='\033[0;31m'
-LIGHT_RED='\033[1;31m'
-PURPLE='\033[0;35m'
-LIGHT_PURPLE='\033[1;35m'
-BROWN='\033[0;33m'
-YELLOW='\033[1;33m'
-GRAY='\033[0;97m'
-LIGHT_GRAY='\033[0;37m'
-PS_CLEAR='\033[0m'
-
-BOLD='\033[1m'
-UL='\033[4m'
-BLINK='\033[5m'
-DIM='\033[2m'
-INVERTED='\033[7m'
-HIDDEN='\033[8m'
-
-#-------------------------------------------------------------------------------
-# Prompt
-#-------------------------------------------------------------------------------
-COLOR1="${BLUE}"
-COLOR2="${BLUE}"
-P="\$"
-
-prompt_simple() {
-    unset PROMPT_COMMAND
-    PS1="\w\$(parse_git_branch) → "
-    PS2="> "
-}
-
-prompt_min() {
-    PS1='\d@\t :: \u@\h:\!\n\#:\w$ '
-    PS2="> "
-}
-
-prompt_compact() {
-    unset PROMPT_COMMAND
-    PS1="${COLOR1}${P}${PS_CLEAR} "
-    PS2="> "
-}
-
-prompt_color_min() {
-    PS1="${GREEN}\w\$(parse_git_branch) → ${GRAY}"
-    PS2="\[[33;1m\]continue \[[0m[1m\]> "
-}
-
-prompt_color() {
-    PS1="${GREEN}________________________________________________________________________________\n| \w \$(parse_git_branch) \n| => \[${GRAY}\]"
-    PS2="${GREEN}| → \[${GRAY}\]"
-}
-
-parse_git_branch() {
-    [ -d .git ] || return 1
-    git symbolic-ref HEAD 2> /dev/null | sed 's#\(.*\)\/\([^\/]*\)$# \2#'
-}
-
-#-------------------------------------------------------------------------------
 # BREW
 #-------------------------------------------------------------------------------
 
@@ -187,15 +104,20 @@ if [[ -d mytmp ]]; then
         export PATH="${mytmp}/libexec/gnubin:${PATH}"
 fi
 
-test -d '/usr/local/sbin' &&
-    export PATH="/usr/local/sbin:${PATH}"
+ test -d '/usr/local/sbin' &&
+     export PATH="/usr/local/sbin:${PATH}"
 
 #-------------------------------------------------------------------------------
 # User Shell Environment
 #-------------------------------------------------------------------------------
 
+# load profile extensions
+for profileext in 'functions' 'colors' 'prompt'; do
+    test -f "${HOME}/.bash_profile_${profileext}" && source ${HOME}/.bash_profile_${profileext};
+done
+
 # load custom functions
-for dotfile in 'functions' 'venv_wrapper' 'mkpystuff' 'st3'; do
+for dotfile in 'venv_wrapper' 'mkpystuff' 'st3'; do
     test -f "${HOME}/.${dotfile}" && source ${HOME}/.${dotfile};
 done
 
@@ -210,14 +132,5 @@ case $UNAME in
         ;;
 esac
 
-# color_prompt=yes
-
-# Set default prompt if interactive
-test -n "$PS1" &&
-prompt_color
-
-# set term title
-# trap 'echo -ne "\033]0;$PWD\007"' DEBUG
-
-export PATH=".:${PATH}"
-
+export PATH=".:${HOME}/.node_modules_global/bin:${PATH}"
+export NODE_PATH="${NODE_PATH}:${HOME}/.node_modules_global/bin:${HOME}/.node_modules_global/lib/node_modules"

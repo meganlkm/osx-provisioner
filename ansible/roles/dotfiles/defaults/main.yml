@@ -6,9 +6,11 @@
 mydotfiles:
   - bash_aliases
   - bash_profile
-  - functions
+  - bash_profile_functions
+  - bash_profile_colors
+  - bash_profile_prompt
   - gitconfig
-  - green
+  - gitignore
   - mkpystuff
   - st3
   - venv_wrapper

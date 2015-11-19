@@ -6,6 +6,7 @@ brew_cask_caskroom: '/opt/homebrew-cask'
 
 brew_cask_pkgs:
   - iterm2
+  - macdown
 
   # - adium
   # - alfred

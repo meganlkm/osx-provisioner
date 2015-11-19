@@ -1,0 +1,52 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+# Prompt
+#-------------------------------------------------------------------------------
+COLOR1="${BLUE}"
+COLOR2="${BLUE}"
+P="\$"
+
+prompt_simple() {
+    unset PROMPT_COMMAND
+    PS1="\w\$(parse_git_branch) → "
+    PS2="> "
+}
+
+prompt_min() {
+    PS1='\d@\t :: \u@\h:\!\n\#:\w$ '
+    PS2="> "
+}
+
+prompt_compact() {
+    unset PROMPT_COMMAND
+    PS1="${COLOR1}${P}${PS_CLEAR} "
+    PS2="> "
+}
+
+prompt_color_min() {
+    PS1="${GREEN}\w\$(parse_git_branch) → ${I_WHITE}"
+    PS2="\[[33;1m\]continue \[[0m[1m\]> "
+}
+
+prompt_color() {
+    PS1="${I_BLACK}_______________________________________________________________________________\n| ${I_BLACK}\$(parse_venv)\$(parse_git_branch)\w\n| ${GREEN}→ ${PS_CLEAR}"
+    PS2="${GREEN}| → ${I_WHITE}"
+}
+
+parse_git_branch() {
+    [ -d .git ] || return 1
+    printf "branch:%s  " $(git symbolic-ref HEAD 2> /dev/null | sed 's#\(.*\)\/\([^\/]*\)$# \2#')
+}
+
+parse_venv() {
+    [[ $VIRTUAL_ENV != "" && -d $VIRTUAL_ENV ]] || return 1
+    printf "(%s)  " $(basename $VIRTUAL_ENV)
+}
+
+# color_prompt=yes
+
+# Set default prompt if interactive
+test -n "$PS1" && prompt_color
+
+# set term title
+# trap 'echo -ne "\033]0;$PWD\007"' DEBUG

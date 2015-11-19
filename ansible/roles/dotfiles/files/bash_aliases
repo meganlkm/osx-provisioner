@@ -20,6 +20,7 @@ alias ls='ls -FGa'
 alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less'
 
 alias less='less -FSRXc'                    # Preferred 'less' implementation
+
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -27,8 +28,12 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias ~="cd ~"                              # Go Home
+alias cdev="cd ~/dev"                       # Go to dev
+alias cdevt="cd ~/dev/test"                 # Go to dev/test
+alias cdevpy="cd ~/dev/test/python"         # Go to dev/test/python
+
 alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
-alias ~="cd ~"                              # ~:            Go Home
 alias c='clear'                             # c:            Clear terminal display
 alias which='type -all'                     # which:        Find executables
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
@@ -37,13 +42,15 @@ alias fix_stty='stty sane'                  # fix_stty:     Restore terminal set
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
 alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias dul='du -h --max-depth=1'
+alias dirsize='du -hs */*'
 alias hi='history | tail -20'
 
-alias dgits='diff -x .git -x __pycache__ -x *.pyc -x *.coverage -rq'
 alias grepr='grep -Hrn'
+alias diff='colordiff'
 
-# recursive dos2unix
 alias dos2unixr='find . -type f -exec dos2unix {} \;'
+alias incog="open -a ~/Applications/Google\ Chrome.app --args --incognito"
+
 #---------------------------
 # GIT
 #---------------------------
@@ -100,55 +107,33 @@ alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rul
 # PYTHON
 #---------------------------
 alias rmpyc="find . -name '*.pyc' -exec rm '{}' ';'"
-alias djm="python manage.py"
-alias djrun="python manage.py runserver"
-alias djtest="python manage.py test"
-alias dgits='diff -x .git -x __pycache__ -x *.pyc -x *.coverage -rq'
-alias autopep8-agg='autopep8 --in-place --aggressive --aggressive'
-alias unittest='python -m unittest -vvvv'
-
-#---------------------------
-# Databases
-#---------------------------
-
-alias sqldev='sh ${HOME}/Applications/SQLDeveloper.app/Contents/MacOS/sqldeveloper.sh'
-
-if [[ -d '/usr/local/var/postgres' ]]; then
-    alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-    alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-fi
-
-#---------------------------
-# Brew - gapple/services
-# http://robots.thoughtbot.com/starting-and-stopping-background-services-with-homebrew
-#---------------------------
-alias srv:restart='brew services restart'
-alias srv:stop='brew services stop'
-alias srv:start='brew services start'
-alias srv:list='brew services list'
 
 #---------------------------
 # OTHERS
 #---------------------------
 alias be='bundle exec'
-alias v='vagrant'
 
-alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
-alias make1mb='mkfile 1m ./1MB.dat'         # make1mb:      Creates a file of 1mb size (all zeros)
-alias make5mb='mkfile 5m ./5MB.dat'         # make5mb:      Creates a file of 5mb size (all zeros)
-alias make10mb='mkfile 10m ./10MB.dat'      # make10mb:     Creates a file of 10mb size (all zeros)
+# count of non-hidden files in current dir
+alias numFiles='echo $(ls -1 | wc -l)'
 
+# Creates a file of 1mb size (all zeros)
+alias make1mb='mkfile 1m ./1MB.dat'
+
+# Creates a file of 5mb size (all zeros)
+alias make5mb='mkfile 5m ./5MB.dat'
+
+# Creates a file of 10mb size (all zeros)
+alias make10mb='mkfile 10m ./10MB.dat'
+
+# reload bash environment - does not unset vars or functions
 alias resess="source ${HOME}/.bash_profile"
 
 alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when booted into single-user
 alias keycp="cat ${HOME}/.ssh/id_rsa.pub | pbcopy && echo 'Copied to clipboard.'"
-alias phpspec='vendor/bin/phpspec'
 
 alias hello='cowsay hi'
 alias bye='cowsay good-bye'
 alias ghost='printf "\n༼ つ ◕_◕ ༽つ\n"'
 
-alias ibook='open -a iBooks'
 alias preview='open -a Preview'
-
-alias dirsize='du -hs */*'
+alias macdown='open -a MacDown'

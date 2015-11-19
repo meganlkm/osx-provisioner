@@ -11,7 +11,7 @@ function mkst3prj() {
     prj=$@
     st3prj=$(get_st3_prj_file ${prj})
     # what if project file exists?
-    if [[ -f $st3prj ]]; then
+    if [[ -f ${st3prj} ]]; then
         echo "project file already exists: [${st3prj}]";
         return 0;
     fi
@@ -42,11 +42,27 @@ function mkst3prj() {
     ],
     "settings":
     {
-        "python_interpreter": "${WORKON_HOME}/${prj}/bin/python",
         "anaconda_debug": true,
-        "anaconda_gutter_theme": "bright",
-        "anaconda_linter_mark_style": "outline",
-        "anaconda_linter_underlines": true
+        "anaconda_linter_underlines": true,
+        "python_interpreter": "${WORKON_HOME}/${prj}/bin/python",
+        "pep257_ignore":
+        [
+            "D209",
+            "D200",
+            "D400",
+            "D401",
+            "D205"
+        ],
+        "pep8_ignore":
+        [
+            "E261",
+            "E265",
+            "E501"
+        ],
+        "AdvancedNewFile": {
+            "base": "${PROJECT_HOME}/${prj}",
+            "main": "${PROJECT_HOME}/${prj}/${prj}"
+        }
     }
 }
 EOL
@@ -55,8 +71,6 @@ EOL
 
 function mkpy() {
     myprj=$@
-    # TODO confirm project name is valid
-
     if [[ $(mkst3prj $myprj) ]]; then
         mkproject $myprj
         subl --project "$(get_st3_prj_file $myprj)"
