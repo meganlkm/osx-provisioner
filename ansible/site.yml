@@ -5,6 +5,8 @@
   roles:
     - mkdirs
     - brew
+    - brew-sysutils
+    - brew-dupes
     - brew-cask
     - osx-defaults
     - python
