@@ -6,3 +6,4 @@
   args:
     creates: "{{ item.destdir }}/{{ item.key_file }}"
   with_items: my_keys
+  when: my_keys is defined
