@@ -3,23 +3,18 @@
 
 st3_lib_base: "~/Library/Application\ Support/Sublime\ Text\ 3"
 
-st3_conf:
-  path: "{{ app_configs }}/st3"
-  user_pkg_path: "{{ st3_lib_base }}/Packages/User"
-  installed_pkgs: "{{ st3_lib_base }}/Installed\ Packages"
-  templates:
-    - 'Glue.sublime-settings'
+st3_conf_user_pkg_path: "{{ st3_lib_base }}/Packages/User"
+st3_conf_installed_pkgs: "{{ st3_lib_base }}/Installed\ Packages"
+st3_project_dir: "~/st3_projects"
 
-st3_brew:
-  taps:
+# st3_conf_templates:
+#     - 'Glue.sublime-settings'
+
+st3_brew_taps:
     - caskroom/cask
     - caskroom/versions
-  formula: "sublime-text3"
 
-st3_project_dirs:
-  - "~/st3_projects"
+st3_brew_formula: sublime-text3
 
-st3_package_control:
-    url: "https://sublime.wbond.net/Package%20Control.sublime-package"
-    dest: "{{ st3_conf.installed_pkgs }}/Package\ Control.sublime-package"
-
+st3_package_control_url: "https://sublime.wbond.net/Package%20Control.sublime-package"
+st3_package_control_dest: "{{ st3_conf_installed_pkgs }}/Package\ Control.sublime-package"

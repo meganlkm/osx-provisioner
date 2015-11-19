@@ -6,57 +6,38 @@
 #   * append st3 conf to bash_profile
 #   * https://sublime.wbond.net/docs/syncing
 
-- name: st3 | taps
+- name: taps
   homebrew_tap:
    name: "{{ item }}"
    state: present
-  with_items: st3_brew.taps
+  with_items: st3_brew_taps
 
-- name: st3 | install sublime-text3
+- name: install sublime-text3
   homebrew_cask:
-    name: "{{ st3_brew.formula }}"
+    name: "{{ st3_brew_formula }}"
     state: present
 
-- name: st3 | ensure paths exists
+- name: ensure paths exists
   file:
     path: "{{ item }}"
     state: directory
+    recurse: yes
   with_items:
-    - st3_conf.installed_pkgs
-    - st3_conf.path
-    - st3_conf.user_pkg_path
+    - st3_conf_installed_pkgs
+    - st3_conf_user_pkg_path
+    - st3_project_dir
 
-- name: st3 | get Package Control and put in Installed Packages directory
+- name: get Package Control and put in Installed Packages directory
   get_url:
-    url: "{{ st3_package_control.url }}"
-    dest: "{{ st3_package_control.dest }}"
+    url: "{{ st3_package_control_url }}"
+    dest: "{{ st3_package_control_dest }}"
 
-- name: st3 | sync this config dir with the fs config dir
-  synchronize:
-    src: "st3_configs/"
-    dest: "{{ st3_conf.path }}"
+- name: copy user preferences to ST3 user config directory
+  copy:
+    src: Preferences.sublime-settings
+    dest: "{{ st3_conf_user_pkg_path }}"
 
-- name: st3 | remove existing User config dir
-  file:
-    path: "{{ st3_conf.user_pkg_path }}"
-    state: absent
-
-- name: st3 | symlink st3 configs
-  file:
-    src: "{{ st3_conf.path }}"
-    dest: "{{ st3_conf.user_pkg_path }}"
-    force: yes
-    state: link
-
-- name: st3 | create configs from templates
-  template:
-    src: "{{ item }}.j2"
-    dest: "{{ st3_conf.path }}/{{ item }}"
-  with_items: st3_conf.templates
-
-- name: st3 | create projects dir
-  file:
-    path: "{{ item }}"
-    state: directory
-  with_items: st3_project_dirs
-
+- name: copy package control preferences to ST3 user config directory
+  copy:
+    src: Package Control.sublime-settings
+    dest: "{{ st3_conf_user_pkg_path }}"

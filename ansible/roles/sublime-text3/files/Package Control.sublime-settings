@@ -1,0 +1,39 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Advanced CSV",
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Ansible",
+		"ApplySyntax",
+		"BracketHighlighter",
+		"FakeDataGenerator",
+		"FileBrowser",
+		"Fold Python",
+		"Fold Python Docstrings",
+		"Function Name Display",
+		"GenerateUUID",
+		"Git",
+		"GitGutter",
+		"Gutter Color",
+		"HTTP Spec Syntax",
+		"InactivePanes",
+		"INI",
+		"JavaScriptNext - ES6 Syntax",
+		"Jinja2",
+		"JsonTree",
+		"LogView",
+		"LoremIpsum",
+		"Markdown Preview",
+		"Neon Color Scheme",
+		"Open Finder",
+		"Package Control",
+		"requirementstxt",
+		"RESTer HTTP Client",
+		"TrailingSpaces"
+	]
+}

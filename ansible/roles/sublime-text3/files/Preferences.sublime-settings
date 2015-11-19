@@ -1,0 +1,74 @@
+{
+	"Seti_SB_custom": true,
+	"Seti_orange_label": true,
+	"Seti_sb_small_padding": true,
+	"Seti_sb_tree_small": true,
+	"Seti_tabs_small": true,
+	"always_prompt_for_file_reload": false,
+	"always_show_minimap_viewport": true,
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_delay": 10,
+	"auto_complete_with_fields": true,
+	"bold_folder_labels": true,
+	"caret_extra_bottom": 3,
+	"caret_extra_width": 2,
+	"caret_style": "solid",
+	"color_scheme": "Packages/Neon Color Scheme/Neon.tmTheme",
+	"default_line_ending": "unix",
+	"draw_minimap_border": true,
+	"draw_white_space": "selection",
+	"enable_telemetry": false,
+	"ensure_newline_at_eof_on_save": true,
+	"fallback_encoding": "ASCII",
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"__pycache__",
+		"*.egg-info"
+	],
+	"font_options":
+	[
+		"subpixel_antialias",
+		"no_round"
+	],
+	"font_size": 12,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignore_vcs_packages": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"inactive_panes_dim_strength": 0.0,
+	"indent_guide_options":
+	[
+		"draw_active",
+		"draw_normal"
+	],
+	"indent_to_bracket": true,
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"margin": -1,
+	"preview_on_click": true,
+	"rulers":
+	[
+		80,
+		100,
+		120
+	],
+	"scroll_past_end": true,
+	"shift_tab_unindent": true,
+	"show_encoding": true,
+	"show_full_path": true,
+	"show_line_endings": true,
+	"show_tab_close_buttons": false,
+	"tab_size": 4,
+	"theme": "Seti_orig.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false,
+	"wrap_width": 120
+}

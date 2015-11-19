@@ -21,7 +21,7 @@ if ! command_exists "brew"; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-sh ./osxdefaults.sh
+sh ./scripts/osxdefaults.sh
 source "${HOME}/.bash_profile"
 source "${HOME}/.bashrc"
 

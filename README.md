@@ -7,6 +7,7 @@
 [TODO](#user-content-todo)
 
 * fix osxdefaults script execution
+* split python role into python2 and python3
 
 ===
 
