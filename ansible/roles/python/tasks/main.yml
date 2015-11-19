@@ -50,15 +50,11 @@
     name: "{{ item }}"
   with_items: python_pip_local_pkgs
 
-- name: install pip3 packages - py3
-  pip:
-    name: "{{ item }}"
-    executable: pip3
-  with_items: python_pip_local_pkgs
-
-##########################################
-# setup virtualenv and virtualenvwrapper
-##########################################
+# - name: install pip3 packages - py3
+#   pip:
+#     name: "{{ item }}"
+#     executable: pip3
+#   with_items: python_pip_local_pkgs
 
 - name: ensure virtualenv workon path exists
   file:

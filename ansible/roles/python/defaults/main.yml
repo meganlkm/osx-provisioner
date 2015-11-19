@@ -11,11 +11,12 @@ python_pip_upgrade_pkgs:
 
 python_pip_local_pkgs:
   - pip-tools
-  - virtualenv-clone
 
 python_venv_home: "{{ ansible_env.HOME }}/dev"
 python_venv_home_envs: "{{ python_venv_home }}/ENVS"
 python_venv_wrapper_path: "/usr/local/bin/virtualenvwrapper.sh"
+
 python_venv_pkgs:
   - virtualenv
+  - virtualenv-clone
   - virtualenvwrapper
