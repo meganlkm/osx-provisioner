@@ -10,11 +10,6 @@ if ! command_exists "gcc"; then
     xcode-select --install
 fi
 
-# check for and install curl
-if ! command_exists "curl"; then
-    # TODO
-fi
-
 if ! command_exists "rvm"; then
     \curl -L https://get.rvm.io | bash -s stable --autolibs=read-fail --auto-dotfiles
     source ~/.rvm/scripts/rvm
@@ -26,7 +21,9 @@ if ! command_exists "brew"; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+sh ./osxdefaults.sh
 source "${HOME}/.bash_profile"
+source "${HOME}/.bashrc"
 
 if ! command_exists "ansible"; then
     brew install ansible
