@@ -4,5 +4,57 @@
 brew_cask_appdir: '~/Applications'
 brew_cask_caskroom: '/opt/homebrew-cask'
 
-brew_cask_tap_name: caskroom/cask
-brew_cask_formula: brew-cask
+brew_cask_pkgs:
+  - iterm2
+
+  # - adium
+  # - alfred
+  # - appcleaner
+  # - bartender
+  # - caffeine
+  # - charles
+  # - chrome-devtools
+  # - colorpicker
+  # - colorpicker-developer
+  # - colorpicker-hex
+  # - dash
+  # - dropbox
+  # - filezilla
+  # - firefox
+  # - firefoxdeveloperedition
+  # - flash
+  # - gimp
+  # - github
+  # - google-chrome
+  # - google-chrome-canary
+  # - hermes
+  # - hipchat
+  # - imageoptim
+  # - isolator
+  # - keepassx
+  # - limechat
+  # - little-snitch
+  # - mailbox
+  # - mou
+  # - nvalt
+  # - qlcolorcode
+  # - qlimagesize
+  # - qlmarkdown
+  # - qlprettypatch
+  # - qlrest
+  # - qlstephen
+  # - qlvideo
+  # - quicklook-csv
+  # - quicklook-json
+  # - razorsql
+  # - shiori
+  # - sizeup
+  # - skim
+  # - skype
+  # - thunderbird
+  # - vagrant
+  # - vagrant-manager
+  # - valentina-studio
+  # - virtualbox
+  # - webpquicklook
+  # - xee
