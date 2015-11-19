@@ -7,65 +7,69 @@
 #   * sudo easy_install --upgrade pip
 #   * brew un/install ansible
 
-- name: python | install brewed pythons
+- name: install brewed pythons
   homebrew:
     name: "{{ item.name }}"
     install_options: "{{ item.options }}"
     state: upgraded
-  with_items: py_pythons
+  with_items: python_pythons
 
 # this messes up system python
-# - name: python | brew link
+# - name: brew link
 #   command: "brew link --overwrite {{ item.name }}"
 #   with_items: pythons
 
-- name: python | brew link py2
-  command: "brew link python"
+- name: brew link py2
+  command: brew link python
 
-- name: python | brew link py3
-  command: "brew link --overwrite python3"
+- name: brew link py3
+  command: brew link --overwrite python3
 
-- name: brew | cleanup
+- name: cleanup
   command: brew cleanup
 
-- name: python | upgrade pip and setuptools - py2
+- name: upgrade pip setuptools and virtualenv - py2
   pip:
     name: "{{ item }}"
-    state: latest
-  with_items: py_pip_upgrade_pkgs
+    state: present
+    extra_args: '--upgrade'
+  with_items:
+    - pip
+    - virtualenv
 
-- name: python | upgrade pip and setuptools - py3
+- name: upgrade pip and setuptools - py3
   pip:
     name: "{{ item }}"
     state: latest
     executable: pip3
-  with_items: py_pip_upgrade_pkgs
+    extra_args: '--upgrade'
+  with_items: python_pip_upgrade_pkgs
 
-- name: python | install pip packages - py2
+- name: install pip packages - py2
   pip:
     name: "{{ item }}"
-  with_items: py_pip_local_pkgs
+  with_items: python_pip_local_pkgs
 
-- name: python | install pip3 packages - py3
+- name: install pip3 packages - py3
   pip:
     name: "{{ item }}"
     executable: pip3
-  with_items: py_pip_local_pkgs
+  with_items: python_pip_local_pkgs
 
 ##########################################
 # setup virtualenv and virtualenvwrapper
 ##########################################
 
-- name: virtualenv | ensure workon path exists
+- name: ensure virtualenv workon path exists
   file:
-    path: "{{ py_venv_home_envs }}"
+    path: "{{ python_venv_home_envs }}"
     state: directory
 
-- name: virtualenv | install pip packages
+- name: install virtualenv pip packages
   pip:
     name: "{{ item }}"
     state: latest
-  with_items: py_venv_pkgs
+  with_items: python_venv_pkgs
 
 ##########################################
 # dot files & other configs
@@ -75,7 +79,7 @@
   copy:
     src: "{{ item }}"
     dest: "{{ app_configs }}/.{{ item }}"
-  with_items: py_dot_files
+  with_items: python_dot_files
 
 - name: create python config loader
   template:
