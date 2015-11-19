@@ -21,7 +21,6 @@ brew_dupes_pkgs:
   - { name: 'openssh', options: 'with-brewed-openssl' }
   - { name: 'rsync', options: '' }
   - { name: 'tcpdump', options: '' }
-  - { name: 'tidy', options: '' }
   - { name: 'units', options: '' }
   - { name: 'unzip', options: '' }
   - { name: 'whois', options: '' }
