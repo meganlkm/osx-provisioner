@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# TODO
+# fix terminal/iterm solarized issue
+
 # ~/.osx — https://mths.be/osx
 
 # Ask for the administrator password upfront
