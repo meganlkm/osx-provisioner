@@ -10,13 +10,8 @@ python_pip_upgrade_pkgs:
   - setuptools
 
 python_pip_local_pkgs:
-  - jinja2
   - pip-tools
-  - PyYAML
-
-python_dot_files:
-  - mkpystuff
-  - venv_wrapper
+  - virtualenv-clone
 
 python_venv_home: "{{ ansible_env.HOME }}/dev"
 python_venv_home_envs: "{{ python_venv_home }}/ENVS"

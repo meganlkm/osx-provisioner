@@ -14,4 +14,4 @@ mydotfiles:
   - mkpystuff
   - st3
   - venv_wrapper
-  - vimrc
+  # - vimrc
