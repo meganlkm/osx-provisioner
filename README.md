@@ -6,14 +6,12 @@
 
 [TODO](#user-content-todo)
 
-* fix osxdefaults script execution
-* split python role into python2 and python3
-
 ===
 
 ### get the package
 
 download package with pre-installed tools:
+
 ````
 python -c "import urllib; urllib.urlretrieve('https://github.com/meganlkm/osx-provisioner/archive/master.tar.gz', 'tmp.tar.gz')" && tar zxvf tmp.tar.gz && rm tmp.tar.gz
 ````
@@ -21,6 +19,7 @@ python -c "import urllib; urllib.urlretrieve('https://github.com/meganlkm/osx-pr
 OR
 
 Clone it:
+
 ````
 git clone https://github.com/meganlkm/osx-provisioner.git
 ````
@@ -44,16 +43,22 @@ git clone https://github.com/meganlkm/osx-provisioner.git
 ### Only install what you want
 
 Remove or add things to the main playbook:
+
 ````
 ansible/site.yml
 ````
 
 Provision your system:
+
 ````
 sh init.sh
 ````
 
 ## TODO
+
+* rewrite...
+* fix osxdefaults script execution
+* split python role into python2 and python3
 
 1. finish refactoring osx-defaults
 2. port mkpy stuff to python package
